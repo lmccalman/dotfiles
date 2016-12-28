@@ -39,3 +39,5 @@ alias kubedocker='eval $(minikube docker-env)'
 # docker
 alias localdocker='eval $(minikube docker-env -u)'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

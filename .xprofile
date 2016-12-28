@@ -1,2 +1,4 @@
 xrdb-merge ~/.Xresources
+export XDG_CURRENT_DESKTOP=KDE
+export QT_STYLE_OVERRIDE=breeze
 nm-tray &
