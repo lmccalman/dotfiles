@@ -1,12 +1,16 @@
 # i3 config file (v4)
 
+# startup
+exec --no-startup-id ~/.init-wm.sh
+
+
 # modifier = Alt, $sup = Wind0ws key
 set $mod Mod1
 set $sup Mod4
 
 focus_follows_mouse no
 
-font pango:Go Mono, FontAwesome 8
+font pango: Cantarell, FontAwesome 8
 
 # I really only have 1 screen
 workspace_layout tabbed
@@ -14,6 +18,9 @@ workspace_layout tabbed
 # Don't waste pixels
 new_window none
 new_float none
+
+gaps inner 20
+gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -122,8 +129,10 @@ bindsym $sup+g exec gwenview
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        # height in pixels
+        height 60
         status_command py3status --config ~/.config/i3status/config
-        font pango:Go Mono, FontAwesome 8
+        font pango:Cantarell, FontAwesome 8
         position bottom
         strip_workspace_numbers yes
         colors {

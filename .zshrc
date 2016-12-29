@@ -1,6 +1,7 @@
 export PACMAN=powerpill
 export GOPATH=~/code/go
 export PATH="$PATH:$GOPATH/bin"
+export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
 

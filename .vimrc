@@ -51,11 +51,11 @@ Plug 'hynek/vim-python-pep8-indent'
 
 " Visual
 " ------
-" Plug 'scrooloose/syntastic' "linting
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/syntastic' "linting
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'kshenoy/vim-signature' "for displaying marks on the left ruler
-Plug 'vim-scripts/Zenburn'
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -63,7 +63,6 @@ Plug 'oblitum/rainbow'
 
 " Etc
 " ---
-Plug 'neomake/neomake'
 Plug 'dbakker/vim-projectroot'
 Plug 'tpope/vim-eunuch' "for :SudoWrite and etc
 Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
@@ -196,9 +195,10 @@ endif
 
 " let g:syntastic_auto_loc_list=0
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline_powerline_fonts = 1
+let g:lightline = {
+  \ 'colorscheme': 'jellybeans',
+  \ }
+
 
 let g:limelight_default_coefficient = 0.5
 " Number of preceding/following paragraphs to include (default: 0)
