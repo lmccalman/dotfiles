@@ -39,6 +39,7 @@ alias nvsteam=LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/
 alias kubedocker='eval $(minikube docker-env)'
 # docker
 alias localdocker='eval $(minikube docker-env -u)'
+alias csirovpn='sudo openconnect -u mcc542 --authgroup=CSIRO-LOCAL-LAN vpn.csiro.au'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
