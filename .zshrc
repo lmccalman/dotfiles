@@ -6,7 +6,7 @@ export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
 
 #plugins=(vi-mode git git-flow-avh python zsh-syntax-highlighting history-substring-search)
-plugins=(vi-mode git) 
+plugins=(vi-mode git history-substring-search) 
 
 ZSH_THEME="lb"
 source $ZSH/oh-my-zsh.sh
