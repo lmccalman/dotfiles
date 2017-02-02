@@ -8,9 +8,9 @@ exec --no-startup-id ~/.init-wm.sh
 set $mod Mod1
 set $sup Mod4
 
-focus_follows_mouse no
+focus_follows_mouse yes
 
-font pango: Cantarell, FontAwesome 8
+font pango: Cantarell, FontAwesome 9
 
 # I really only have 1 screen
 workspace_layout tabbed
@@ -19,7 +19,7 @@ workspace_layout tabbed
 new_window none
 new_float none
 
-gaps inner 20
+gaps inner 10
 gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -130,9 +130,9 @@ bindsym $sup+g exec gwenview
 # finds out, if available)
 bar {
         # height in pixels
-        height 60
+        height 40
         status_command py3status --config ~/.config/i3status/config
-        font pango:Cantarell, FontAwesome 8
+        font pango:Cantarell, FontAwesome 9
         position bottom
         strip_workspace_numbers yes
         colors {

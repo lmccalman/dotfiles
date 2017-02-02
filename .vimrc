@@ -87,7 +87,6 @@ let mapleader = ","
 nnoremap Q gqip
 vnoremap Q gq
 
-
 " }}}
 
 " ==== Diffs ==== {{{
@@ -105,6 +104,7 @@ set foldmethod=marker
 " }}}
 
 " ==== IO ==== {{{
+set hidden  " let me move buffers without saving
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files

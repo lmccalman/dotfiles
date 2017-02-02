@@ -40,6 +40,8 @@ alias kubedocker='eval $(minikube docker-env)'
 # docker
 alias localdocker='eval $(minikube docker-env -u)'
 alias csirovpn='sudo openconnect -u mcc542 --authgroup=CSIRO-LOCAL-LAN vpn.csiro.au'
-
+# monitors
+alias atdesk='xrandr --output VIRTUAL1 --off --output eDP1 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output DP1-2 --mode 3840x2160 --pos 0x0 --rotate normal --output DP1-1 --off --output DP2 --off'
+alias onthemove='xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output DP1-2 --off --output DP1-1 --off --output DP2 --off'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
