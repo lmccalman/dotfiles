@@ -4,6 +4,8 @@ export PATH="$PATH:$GOPATH/bin"
 export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
+export CUDA_HOME=/opt/cuda
 
 #plugins=(vi-mode git git-flow-avh python zsh-syntax-highlighting history-substring-search)
 plugins=(vi-mode git history-substring-search) 
@@ -16,6 +18,7 @@ export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 source /usr/bin/virtualenvwrapper.sh
+
 
 #Aliases
 alias shutdown="sudo shutdown -hP now"
