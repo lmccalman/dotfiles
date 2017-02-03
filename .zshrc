@@ -8,7 +8,7 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
 export CUDA_HOME=/opt/cuda
 
 #plugins=(vi-mode git git-flow-avh python zsh-syntax-highlighting history-substring-search)
-plugins=(vi-mode git history-substring-search) 
+plugins=(vi-mode git history-substring-search kubectl) 
 
 ZSH_THEME="lb"
 source $ZSH/oh-my-zsh.sh
