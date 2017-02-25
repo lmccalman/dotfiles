@@ -1,5 +1,3 @@
-
-
 " ==== Plugins ==== {{{
 
 " auto-install plug if it doesn't exist
@@ -15,16 +13,11 @@ call plug#begin('~/.vim/bundle')
 " ------------------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'gabesoft/vim-ags'
 
 " Navigation
 " ----------
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
-
-" These appear to be the source of the weird write error
-"Plug 'majutsushi/tagbar'
-"Plug 'ludovicchabant/vim-gutentags' "automatic generation of tag files
 
 " Text Objects
 " ------------
@@ -44,17 +37,15 @@ Plug 'lervag/vimtex'
 " -----------------------
 "  pip install --upgrade jedi flake8
 Plug 'raimondi/delimitmate'
-Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'maralla/completor.vim'
 
 " Visual
 " ------
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic' "linting
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'kshenoy/vim-signature' "for displaying marks on the left ruler
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/goyo.vim'
@@ -330,13 +321,19 @@ if !exists(":DiffOrig")
                  \ | wincmd p | diffthis
 endif
 
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 1
 
 " }}}
 
 " ==== Searching ==== {{{
 
+
+" ripgrep search. Useage :Find <str>
+command! -bang -nargs=* Find call fzf#vim#grep('rg --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
 set gdefault "this means I don't have to type g in a replace
-set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+set grepprg=rg\ --vimgrep\ --no-heading
 set ignorecase
 set matchpairs+=<:>  "for html etc
 set smartcase
@@ -446,14 +443,9 @@ augroup END
 " }}}
 
 " ==== Completion ==== {{{
-let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>a"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"

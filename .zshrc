@@ -6,6 +6,8 @@ export TERM=xterm-256color
 export ZSH=$HOME/.oh-my-zsh
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
 export CUDA_HOME=/opt/cuda
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 
 #plugins=(vi-mode git git-flow-avh python zsh-syntax-highlighting history-substring-search)
 plugins=(vi-mode git history-substring-search kubectl) 
@@ -38,7 +40,7 @@ alias pacinf='pacaur -Si' # Display information about a given package in the rep
 alias pacs='pacaur -Ss' # Search for package(s) in the repositories
 alias pacfiles='pacaur -Ql' # list the files from a certain pacagke
 # steam
-alias nvsteam=LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1' primusrun steam 
+alias nvsteam=LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1' optirun steam 
 alias kubedocker='eval $(minikube docker-env)'
 # docker
 alias localdocker='eval $(minikube docker-env -u)'
@@ -48,3 +50,4 @@ alias atdesk='xrandr --output VIRTUAL1 --off --output eDP1 --off --output DP1 --
 alias onthemove='xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output DP1-2 --off --output DP1-1 --off --output DP2 --off'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey '^P' fzf
