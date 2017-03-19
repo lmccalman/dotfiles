@@ -1,4 +1,4 @@
-# i3 config file (v4)
+
 
 # startup
 exec --no-startup-id ~/.init-wm.sh
@@ -22,11 +22,13 @@ new_float none
 gaps inner 10
 gaps outer 0
 
+for_window [class="Google-chrome"] focus child, layout stacking, focus
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # kill focused window
-bindsym $mod+\ kill
+bindsym $mod+d kill
 
 # change focus
 bindsym $mod+h focus left
@@ -61,10 +63,10 @@ bindsym $mod+Shift+t floating toggle
 bindsym $mod+t focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+plus focus parent
 
 # focus the child container
-bindsym $mod+d focus child
+bindsym $mod+hyphen focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1:I
@@ -121,8 +123,8 @@ bindsym $mod+Tab exec quickswitch
 # start gmrun
 bindsym $sup+r exec gmrun
 bindsym $sup+Return exec termite
-bindsym $sup+f exec firefox
-bindsym $sup+v exec gvim
+bindsym $sup+f exec google-chrome-stable
+bindsym $sup+v exec termite -e nvim
 bindsym $sup+g exec gwenview
 
 
@@ -131,7 +133,7 @@ bindsym $sup+g exec gwenview
 bar {
         # height in pixels
         height 40
-        status_command py3status --config ~/.config/i3status/config
+        status_command $HOME/.config/i3/conky-i3bar.sh
         font pango:Cantarell, FontAwesome 9
         position bottom
         strip_workspace_numbers yes
