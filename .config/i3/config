@@ -22,8 +22,6 @@ new_float none
 gaps inner 10
 gaps outer 0
 
-for_window [class="Google-chrome"] focus child, layout stacking, focus
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

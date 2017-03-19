@@ -114,7 +114,7 @@ set undofile
 set writebackup
 set autoread
 set autowrite
-au FocusLost * :echo "Focus lost: saving all buffers" | :wall
+" au FocusLost * :echo "Focus lost: saving all buffers" | :wall
 " Remove trailing whitespace in python
 autocmd BufWritePre *.py :%s/\s\+$//e
 " Save cursor, folds etc from last edit
