@@ -36,11 +36,11 @@ TEXT
 
 # JSON for i3bar
 
- [{ "full_text" : "${distribution} ${kernel}\t" , "color" : "\#ffffff" },
-  { "full_text" : " ${fs_free /home} ${diskio}\t" , "color" : "\#ffffff" },
-  { "full_text" : "CPU ${acpitemp}°C\t" , "color" : "\#ffffff" },
-  { "full_text" : " ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} ${cpu cpu5} ${cpu cpu6} ${cpu cpu7} ${cpu cpu8}" , "color" : "\#ffffff" }, 
+ [{ "full_text" : "${distribution} ${kernel}  | " , "color" : "\#ffffff" },
+  { "full_text" : "CPU  ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} ${cpu cpu5} ${cpu cpu6} ${cpu cpu7} ${cpu cpu8}" , "color" : "\#ffffff" }, 
+  { "full_text" : " ${acpitemp}°C  | " , "color" : "\#ffffff" },
+  { "full_text" : " ${memeasyfree} | " , "color" : "\#ffffff"},
+  { "full_text" : " ${fs_free /home} ${diskio} | " , "color" : "\#ffffff" },
   { "full_text" : " ${acpiacadapter}" , "color" : "\#ffffff" },
-  { "full_text" : "${battery_bar 1,10}\t" , "color" : "\#ffffff" },
-  { "full_text" : " ${memeasyfree}\t" , "color" : "\#ffffff"},
-  { "full_text" : " ${time %A, %B %d   %H:%M}\t" , "color" : "\#ffffff"}],
+  { "full_text" : "${battery_bar 1,10}  | " , "color" : "\#ffffff" },
+  { "full_text" : " ${time %A, %B %d  |   %H:%M}  |  " , "color" : "\#ffffff"}],
