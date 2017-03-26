@@ -23,6 +23,9 @@ source /usr/bin/virtualenvwrapper.sh
 
 
 #Aliases
+#
+alias cp='acp -g'
+alias mv='amv -g'
 alias shutdown="sudo shutdown -hP now"
 alias aoeu='setxkbmap us'
 alias asdf='setxkbmap dvorak'
