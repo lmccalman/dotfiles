@@ -1,4 +1,4 @@
-#export PACMAN=powerpill
+export PACMAN=powerpill
 export GOPATH=~/code/go
 export PATH="$PATH:$GOPATH/bin"
 export EDITOR=/usr/bin/nvim
