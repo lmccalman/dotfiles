@@ -45,7 +45,7 @@ Plug 'maralla/completor.vim'
 " Visual
 " ------
 Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/syntastic' "linting
+Plug 'w0rp/ale' "linting
 Plug 'kshenoy/vim-signature' "for displaying marks on the left ruler
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/goyo.vim'
@@ -161,6 +161,7 @@ set display=uhex " affects the last line somehow
 set cmdheight=2
 set cursorline
 set colorcolumn=+1
+set laststatus=2
 
 " Visual Appearance
 set guifont=Anonymous\ Pro\ for\ Powerline\ 10
@@ -184,12 +185,7 @@ if has('gui_running')
     set guioptions-=LlRrb
 endif
 
-" let g:syntastic_auto_loc_list=0
-
-let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-  \ }
-
+let g:lightline = {'colorscheme': 'jellybeans'}
 
 let g:limelight_default_coefficient = 0.5
 " Number of preceding/following paragraphs to include (default: 0)
@@ -323,6 +319,12 @@ endif
 
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 1
+
+let g:vimtex_view_method = 'zathura'
 
 " }}}
 

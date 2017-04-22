@@ -124,6 +124,8 @@ bindsym $sup+Return exec termite
 bindsym $sup+f exec google-chrome-stable
 bindsym $sup+v exec termite -e nvim
 bindsym $sup+g exec gwenview
+bindsym $sup+s exec slack
+bindsym $sup+m exec spotify
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
