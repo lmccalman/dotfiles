@@ -24,6 +24,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 #Aliases
 #
+alias ag='rq'
 alias cp='acp -g'
 alias mv='amv -g'
 alias shutdown="sudo shutdown -hP now"

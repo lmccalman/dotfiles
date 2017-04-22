@@ -321,10 +321,10 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 let g:ale_open_list = 1
 
-
+let g:vimtex_view_method = 'zathura'
 
 " }}}
 
