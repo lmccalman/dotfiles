@@ -1,7 +1,7 @@
 
 
 # startup
-exec --no-startup-id ~/.init-wm.sh
+exec --no-startup-id ~/.config/i3/init-wm.sh
 
 
 # modifier = Alt, $sup = Wind0ws key
