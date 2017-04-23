@@ -116,10 +116,8 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Tab exec quickswitch
-
-# start gmrun
-bindsym $sup+r exec gmrun
+bindsym $mod+Tab exec rofi -show window
+bindsym $sup+r exec rofi -show run
 bindsym $sup+Return exec termite
 bindsym $sup+f exec google-chrome-stable
 bindsym $sup+v exec termite -e nvim
