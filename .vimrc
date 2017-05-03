@@ -414,13 +414,14 @@ au BufNewFile,BufRead *.mako set filetype=mako
 let g:tex_flavor='latex'
 augroup ft_tex
     au!
-    au FileType tex setlocal formatoptions=tcqr 
+    au FileType tex setlocal formatoptions="" 
+    au FileType tex setlocal textwidth=0
+    au FileType tex setlocal wrapmargin=0
+    au FileType tex setlocal wrap
     au FileType tex setlocal shiftwidth=2 
     au FileType tex setlocal tabstop=2 
     au FileType tex setlocal spelllang=en_gb 
     au FileType tex setlocal iskeyword+=: 
-    au FileType tex setlocal makeprg=rubber\ -m\ xelatex\ % 
-    au FileType tex setlocal errorformat=%f:%l:\ %m
 augroup END
 augroup ft_python
     au!
