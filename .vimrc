@@ -231,9 +231,6 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 inoremap  <Esc>    <NOP>
-"screen lines instead of global lines
-nnoremap j gj
-nnoremap k gk
 
 " Fix linewise visual selection of various text objects
 nnoremap VV V
@@ -412,16 +409,25 @@ au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.mako set filetype=mako
 " ensures latex not plaintex chosen when opening a blank .tex file
 let g:tex_flavor='latex'
+
+function! MyFormatExpr(start, end)
+    silent execute a:start.','.a:end.'s/[.!?]\zs /\r/g'
+endfunction
+
+
 augroup ft_tex
     au!
     au FileType tex setlocal formatoptions="" 
     au FileType tex setlocal textwidth=0
     au FileType tex setlocal wrapmargin=0
     au FileType tex setlocal wrap
+    au FileType tex setlocal linebreak
+    au FileType tex setlocal breakindent
     au FileType tex setlocal shiftwidth=2 
     au FileType tex setlocal tabstop=2 
     au FileType tex setlocal spelllang=en_gb 
     au FileType tex setlocal iskeyword+=: 
+    au FileType tex setlocal formatexpr=MyFormatExpr(v:lnum,v:lnum+v:count-1)
 augroup END
 augroup ft_python
     au!

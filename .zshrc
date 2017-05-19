@@ -43,6 +43,7 @@ alias pacrem='pacaur -Rns' # Remove the specified package(s), its configuration(
 alias pacinf='pacaur -Si' # Display information about a given package in the repositories
 alias pacs='pacaur -Ss' # Search for package(s) in the repositories
 alias pacfiles='pacaur -Ql' # list the files from a certain pacagke
+alias pacwhich='pacaur -Qo' # which package has that file
 # steam
 alias nvsteam=LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1' optirun steam 
 alias kubedocker='eval $(minikube docker-env)'
