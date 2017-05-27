@@ -3,6 +3,7 @@ export GOPATH=~/code/go
 export PATH="$PATH:$GOPATH/bin"
 export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
+export TERMINAL=/usr/bin/termite
 export ZSH=$HOME/.oh-my-zsh
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
 export CUDA_HOME=/opt/cuda
