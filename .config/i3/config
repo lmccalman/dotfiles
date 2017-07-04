@@ -117,7 +117,7 @@ mode "resize" {
 }
 
 bindsym $mod+Tab exec rofi -show window
-bindsym $sup+r exec rofi -show run
+bindsym $sup+r exec "rofi -combi-modi window,run -show combi -modi combi"
 bindsym $sup+Return exec termite
 bindsym $sup+f exec google-chrome-stable
 bindsym $sup+v exec termite -e nvim

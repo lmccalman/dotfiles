@@ -323,6 +323,11 @@ let g:ale_open_list = 1
 
 let g:vimtex_view_method = 'zathura'
 
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost ~/.vimrc source ~/.vimrc
+augroup END " }
+
 " }}}
 
 " ==== Searching ==== {{{
@@ -462,4 +467,3 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:ultisnips_python_style="numpy"
 
 " }}}
-
