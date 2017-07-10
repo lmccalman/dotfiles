@@ -1,4 +1,3 @@
-export PACMAN=powerpill
 export GOPATH=~/code/go
 export PATH="$PATH:$GOPATH/bin"
 export EDITOR=/usr/bin/nvim
@@ -8,6 +7,10 @@ export ZSH=$HOME/.oh-my-zsh
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
 export CUDA_HOME=/opt/cuda
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# for pacmatic
+export pacman_program="pacaur"
+export pacdiff_program="sudo pacdiff"
 
 
 #plugins=(vi-mode git git-flow-avh python zsh-syntax-highlighting history-substring-search)
@@ -37,7 +40,7 @@ alias listfonts="fc-list | sed 's,:.*,,' | sort -u"
 alias fontinfo="otfinfo -f"
 # pacman/pacaur
 alias pacall="LC_ALL=C pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2 | column -t"
-alias pacupg='pacaur -Syu' # Synchronize with repositories before upgrading packages that are out of date on the local system.
+alias pacupg='pacmatic -Syu' # Synchronize with repositories before upgrading packages that are out of date on the local system.
 alias pacin='pacaur -S' # Install specific package(s) from the repositories
 alias pacre='pacaur -R' # Remove the specified package(s), retaining its configuration(s) and required dependencies
 alias pacrem='pacaur -Rns' # Remove the specified package(s), its configuration(s) and unneeded dependencies

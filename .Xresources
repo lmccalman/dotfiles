@@ -7,7 +7,6 @@ Xft.rgba: rgb
 Xft.dpi: 192
 Xcursor.size: 64
 
-# Jellybean-ish
 rofi.color-enabled: true
 rofi.color-window: #151515, #151515, #888888
 rofi.color-normal: #151515, #e8e8d3, #151515, #e8e8d3, #151515
