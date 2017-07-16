@@ -20,3 +20,7 @@ sh
 pyp (awk/sed replacement)
 
 https://github.com/jarun/imgp
+
+For making new SSH keys:
+
+  ssh-keygen -t ed25519
