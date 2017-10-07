@@ -239,6 +239,9 @@ nnoremap Vat vatV
 nnoremap Vab vabV
 nnoremap VaB vaBV
 
+" Mouse tiem
+set mouse=a
+
 " Hardtime
 let g:hardtime_allow_different_key = 0
 let g:hardtime_default_on = 1
@@ -268,6 +271,7 @@ let g:neomake_list_height = 10
 
 " }}}
 
+
 " ==== Editing ==== {{{
 set backspace=indent,eol,start "Try not to use backspace!
 nnoremap <leader>h :HardTimeToggle
@@ -284,9 +288,6 @@ nnoremap z= :echo "use zz you idiot"<cr>
 " Dates
 :nnoremap <F6> "=strftime("%d_%b_%Y")<CR>P
 :inoremap <F6> <C-R>=strftime("%d_%b_%Y")<CR>
-
-" Use par for prettier line formatting
-set formatprg="PARINIT='rTbgqR B=.,?_A_a Q=_s>|' par\ -w79"
 
 " default text object is P, alse try [[ and ]]
 autocmd FileType python BracelessEnable +indent
@@ -388,7 +389,7 @@ nnoremap <silent> <leader>b :FzfBuffers<CR>
 
 " ==== Clipboard and Undo ==== {{{
 set pastetoggle=<leader>p
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 " Select (charwise) the contents of the current line, excluding indentation.
 " Great for pasting Python lines into REPLs.

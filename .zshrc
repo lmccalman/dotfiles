@@ -38,7 +38,7 @@ alias listfonts="fc-list | sed 's,:.*,,' | sort -u"
 alias fontinfo="otfinfo -f"
 # pacman/pacaur
 alias pacall="LC_ALL=C pacman -Qi | sed -n '/^Name[^:]*: \(.*\)/{s//\1 /;x};/^Installed[^:]*: \(.*\)/{s//\1/;H;x;s/\n//;p}' | sort -nk2 | column -t"
-alias pacupg='pacmatic -Syu' # Synchronize with repositories before upgrading packages that are out of date on the local system.
+alias pacupg='pacaur -Syu --noconfirm' # Synchronize with repositories before upgrading packages that are out of date on the local system.
 alias pacin='pacaur -S' # Install specific package(s) from the repositories
 alias pacre='pacaur -R' # Remove the specified package(s), retaining its configuration(s) and required dependencies
 alias pacrem='pacaur -Rns' # Remove the specified package(s), its configuration(s) and unneeded dependencies
