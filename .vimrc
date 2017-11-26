@@ -18,6 +18,8 @@ Plug 'junegunn/fzf.vim'
 " ----------
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
+Plug 'bkad/CamelCaseMotion'
+Plug 'yuttie/comfortable-motion.vim'
 
 " Text Objects
 " ------------
@@ -51,6 +53,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'oblitum/rainbow'
+Plug 'xtal8/traces.vim'
 
 " Etc
 " ---
@@ -265,6 +268,16 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
+
+" have w respect camelcase
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
 
 let g:neomake_open_list = 1
 let g:neomake_list_height = 10
