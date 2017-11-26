@@ -25,10 +25,12 @@ source /usr/bin/virtualenvwrapper.sh
 export ZSH=$HOME/.oh-my-zsh
 # dircycle: Ctrl+Shift+ Left/Right for moving around directory stack
 # cp: provides cpv alias for rsync
+# ctrl + space: execute suggestion
 plugins=(cp dircycle dirpersist docker git git-flow-avh per-directory-history \
-  history-substring-search kubectl) 
+  history-substring-search kubectl zsh-autosuggestions) 
 ZSH_THEME="lb"
 source $ZSH/oh-my-zsh.sh
+bindkey '^ ' autosuggest-execute
 # }}}
 
 ### System aliases {{{
@@ -77,5 +79,13 @@ alias onthemove='xrandr --output eDP-1 --mode 3840x2160 --pos 0x0 --rotate norma
 ### FZF {{{
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey '^P' fzf
+# }}}
+
+### command-not-found {{{
+source /usr/share/doc/pkgfile/command-not-found.zsh
+# }}}
+
+
+### Syntax highlighting {{{
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # }}}
