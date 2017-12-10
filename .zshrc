@@ -1,6 +1,6 @@
 ### Basic ENVs {{{
 export EDITOR=/usr/bin/nvim
-export TERM=xterm-256color
+export TERM=xterm-termite
 export TERMINAL=/usr/bin/termite
 # }}}
 
@@ -22,16 +22,26 @@ source /usr/bin/virtualenvwrapper.sh
 # }}}
 
 ### Oh-my-zsh {{{
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH=$HOME/.oh-my-zsh
 # dircycle: Ctrl+Shift+ Left/Right for moving around directory stack
 # cp: provides cpv alias for rsync
-# ctrl + space: execute suggestion
-plugins=(cp dircycle dirpersist docker git git-flow-avh per-directory-history \
+# shif + tab: execute suggestion
+plugins=(cp dircycle dirpersist docker git git-flow-avh \
   history-substring-search kubectl zsh-autosuggestions) 
 ZSH_THEME="lb"
 source $ZSH/oh-my-zsh.sh
-bindkey '^ ' autosuggest-execute
+bindkey '^[[Z' autosuggest-execute
 # }}}
+
+### termite {{{
+# allow the "open in current dir" command to work
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+# }}}
+
 
 ### System aliases {{{
 alias ag='rg'
@@ -79,12 +89,12 @@ alias onthemove='xrandr --output eDP-1 --mode 3840x2160 --pos 0x0 --rotate norma
 ### FZF {{{
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias hs="cut -d';' -f2  ~/.zsh_history | fzf"
 # }}}
 
 ### command-not-found {{{
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # }}}
-
 
 ### Syntax highlighting {{{
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

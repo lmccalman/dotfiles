@@ -20,6 +20,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 Plug 'bkad/CamelCaseMotion'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'easymotion/vim-easymotion'
 
 " Text Objects
 " ------------
@@ -57,7 +58,6 @@ Plug 'xtal8/traces.vim'
 
 " Etc
 " ---
-Plug 'dbakker/vim-projectroot'
 Plug 'tpope/vim-eunuch' "for :SudoWrite and etc
 Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
 Plug 'AndrewRadev/splitjoin.vim' "1 line ifs / multiline ifs
@@ -268,6 +268,9 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
+""" Quicker assisted find (usually leader-leader):
+map <leader>n <Plug>(easymotion-f)
+map <leader>N <Plug>(easymotion-F)
 
 " have w respect camelcase
 map <silent> w <Plug>CamelCaseMotion_w
@@ -282,6 +285,10 @@ sunmap ge
 let g:neomake_open_list = 1
 let g:neomake_list_height = 10
 
+" Custom fzf#Ag
+command! -bang -nargs=* FzfAu call fzf#vim#grep('rg --type py --no-heading --line-number .$ ~/code/', 0)
+
+let g:EasyMotion_keys='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 " }}}
 
 
@@ -363,13 +370,11 @@ nnoremap ? ?\M
 vnoremap ? ?\M
 nnoremap :s/ :s/\M
 
-"Ag
-nnoremap <Leader>/h :Ags<Space>
-nnoremap <Leader>/ :ProjectRootExe :Ags<Space>
 "FZF
 nnoremap <silent> <leader>g :FzfCommits<CR>
 nnoremap <silent> <leader>l :FzfLines<CR>
 nnoremap <silent> <leader>t :FzfTags<CR>
+nnoremap <silent> <leader>r :FzfAu<CR>
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
