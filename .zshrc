@@ -58,17 +58,17 @@ alias fontinfo="otfinfo -f"
 alias gtree='git log --oneline --decorate --graph --all'
 # }}}
 
-# Pacaur {{{
-alias pacall='pacaur -Qq' # list all installed packages
-alias pacexp='pacaur -Qqett' # explicitly installed packages
-alias pacupg='pacaur -Syu --noconfirm' # sync and upgrade
-alias pacin='pacaur -S' # install
-alias pacrem='pacaur -Rns' # remove
-alias pacinf='pacaur -Si' # show info
-alias pacs='pacaur -Ss' # search
-alias pacfiles='pacaur -Ql' # list the files from a certain pacagke
-alias pacwhich='pacaur -Qo' # which package has that file
-alias pacclean='pacaur -Qdtq | pacaur -Rs -' # kill unneeded pacs
+# yay {{{
+alias pacall='yay -Qq' # list all installed packages
+alias pacexp='yay -Qqett' # explicitly installed packages
+alias pacupg='yay -Syu --noconfirm' # sync and upgrade
+alias pacin='yay -S' # install
+alias pacrem='yay -Rns' # remove
+alias pacinf='yay -Si' # show info
+alias pacs='yay -Ss' # search
+alias pacfiles='yay -Ql' # list the files from a certain pacagke
+alias pacwhich='yay -Qo' # which package has that file
+alias pacclean='yay -Qdtq | yay -Rs -' # kill unneeded pacs
 # }}}
 
 ### Steam {{{
