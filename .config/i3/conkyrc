@@ -41,5 +41,5 @@ TEXT
   { "full_text" : " ${acpitemp}°C  | " , "color" : "\#ffffff" },
   { "full_text" : " ${memeasyfree} | " , "color" : "\#ffffff"},
   { "full_text" : " ${fs_free /home} ${diskio_read}/${diskio_write} | " , "color" : "\#ffffff" },
-  { "full_text" : "${downspeed}/${upspeed}|" , "color" : "\#ffffff" },
+  { "full_text" : "${downspeed eno1}/${upspeed eno1}|" , "color" : "\#ffffff" },
   { "full_text" : " ${time %A, %B %d  |   %H:%M}  |  " , "color" : "\#ffffff"}],
