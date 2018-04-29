@@ -27,6 +27,7 @@ export ZSH=$HOME/.oh-my-zsh
 # dircycle: Ctrl+Shift+ Left/Right for moving around directory stack
 # cp: provides cpv alias for rsync
 # shif + tab: execute suggestion
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 plugins=(cp dircycle dirpersist docker git git-flow-avh \
   history-substring-search kubectl zsh-autosuggestions) 
 ZSH_THEME="lb"
@@ -93,9 +94,11 @@ alias hs="cut -d';' -f2  ~/.zsh_history | fzf"
 # }}}
 
 ### command-not-found {{{
+# pacin pkgfile
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # }}}
 
 ### Syntax highlighting {{{
+# pacin zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # }}}
