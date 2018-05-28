@@ -55,6 +55,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'oblitum/rainbow'
 Plug 'xtal8/traces.vim'
+Plug 'LnL7/vim-nix'
 
 " Etc
 " ---
