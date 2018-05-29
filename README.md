@@ -1,8 +1,8 @@
 # dotfiles
 Current dotfiles on my linux machines
 
-I use adwaita.
-Font for desktop is cantarell.
+I use adapta.
+Font for desktop is roboto.
 Breeze snow cursor theme from KDE
 
 clight with geoclue2 for brightness of screen
@@ -77,6 +77,27 @@ breeze-snow-cursor-theme
 unzip
 lm_sensors
 spotify
+alsa-utils
+nemo
+nemo-preview
+nemo-dropbox
+jack2-dbus
+cadence
+ladish
+pulseaudio-alsa
+pulseaudio-jack
+bitwig-studio
+adapta-gtk-theme
+adapta-kde
+kvantum-theme-adapta
+ttf-roboto
+vdpauinfo
+texlive-most
+texlive-most
+lilypond
+denemo
+fluidsynth
+soundfont-fluid
 
 # Laptop only
 networkmanager
