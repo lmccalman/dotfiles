@@ -98,6 +98,8 @@ lilypond
 denemo
 fluidsynth
 soundfont-fluid
+openvpn
+transmission-gtk
 
 # Laptop only
 networkmanager

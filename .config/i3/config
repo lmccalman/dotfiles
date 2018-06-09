@@ -135,11 +135,11 @@ bar {
         height 40
         status_command $HOME/.config/i3/conky-i3bar.sh
         font pango:Cantarell, FontAwesome 9
-        position bottom
+        position top
         strip_workspace_numbers yes
         colors {
             background #151515
-            statusline #888888
+            statusline #666666
             separator #151515
             #border, background, text color
             focused_workspace  #4c7899 #285577 #E8E8D3
