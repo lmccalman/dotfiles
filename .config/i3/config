@@ -134,7 +134,7 @@ bar {
         # height in pixels
         height 40
         status_command $HOME/.config/i3/conky-i3bar.sh
-        font pango:Cantarell, FontAwesome 9
+        font pango:Source Code Pro, FontAwesome 9
         position top
         strip_workspace_numbers yes
         colors {
