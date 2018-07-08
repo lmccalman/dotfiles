@@ -92,5 +92,5 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}${blue_cp}"
 local path_p="${blue_op}%~${blue_cp}"
 local user_host="${blue_op}%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[cyan]%}%m${blue_cp}"
 local ret_status="${blue_op}%?${blue_cp}"
-local smiley="%(?,%{$fg[green]%}:%)%{$reset_color%},%{$fg[red]%}:(%{$reset_color%})"
+local smiley="%(?,%{$fg[green]%}=%)%{$reset_color%},%{$fg[red]%}=(%{$reset_color%})"
 

@@ -42,6 +42,9 @@ xorg-fonts-misc
 go-fonts-git
 otf-font-awesome
 ttf-roboto
+adobe-source-code-pro-fonts
+adobe-source-han-sans-jp-fonts
+otf-ipafont
 
 ## My Packages
 neovim
@@ -93,12 +96,25 @@ vdpauinfo
 texlive-most
 texlive-most
 lilypond
-denemo
 fluidsynth
 soundfont-fluid
 openvpn
 transmission-gtk
-adobe-source-code-pro-fonts
+network-manager
+network-manager-applet
+dhclient
+ntfs-3g
+darktable
+musescore
+gwenview
+mozc
+fcitx
+fcitx-mozc
+fcitx-configtool
+fcitx-im
+fcitx
+fctix-ui-light
+
 
 # Laptop only
 networkmanager
