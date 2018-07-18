@@ -111,8 +111,10 @@ mozc
 fcitx
 fcitx-mozc
 fcitx-configtool
-fcitx-im
-fcitx
+fcitx-gtk2
+fcitx-gtk3
+fcitx-qt4
+fcitx-qt5
 fctix-ui-light
 
 
