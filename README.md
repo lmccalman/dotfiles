@@ -116,7 +116,7 @@ fcitx-gtk3
 fcitx-qt4
 fcitx-qt5
 fctix-ui-light
-
+meld
 
 # Laptop only
 networkmanager
