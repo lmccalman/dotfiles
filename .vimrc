@@ -48,13 +48,17 @@ Plug 'maralla/completor.vim'
 " Visual
 " ------
 Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'w0rp/ale' "linting
 Plug 'kshenoy/vim-signature' "for displaying marks on the left ruler
-Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'oblitum/rainbow'
 Plug 'xtal8/traces.vim'
+Plug 'LnL7/vim-nix'
+Plug 'neovimhaskell/haskell-vim'
+" Plug 'alx741/vim-hindent'
 
 " Etc
 " ---
@@ -141,7 +145,7 @@ set linebreak
 set expandtab
 set softtabstop=-1
 set shiftwidth=0
-set noshiftround
+set shiftround
 set tabstop=2
 set textwidth=79
 set virtualedit=block
@@ -180,7 +184,12 @@ if !has('nvim')
   set t_Co=256
 endif
 
-colorscheme jellybeans
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='medium'
+set background=dark    " Setting dark mode
+
+colorscheme gruvbox
+
 if has('gui_running')
     set guioptions-=T   " Get rid of toolbar "
     set guioptions-=m   " Get rid of menu    "
@@ -188,7 +197,7 @@ if has('gui_running')
     set guioptions-=LlRrb
 endif
 
-let g:lightline = {'colorscheme': 'jellybeans'}
+let g:lightline = {'colorscheme': 'gruvbox'}
 
 let g:limelight_default_coefficient = 0.5
 " Number of preceding/following paragraphs to include (default: 0)
