@@ -67,6 +67,7 @@ Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
 Plug 'AndrewRadev/splitjoin.vim' "1 line ifs / multiline ifs
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 call plug#end()
 " }}}
