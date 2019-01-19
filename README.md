@@ -31,6 +31,12 @@ yay --answeredit None
 yay --answerclean NotInstalled
 
 
+## audio
+passwd --add lb realtime
+cpupower frequency-set -g performance
+
+
+
 ## Non-free fonts
 ttf-ms-win10
 
@@ -117,6 +123,19 @@ fcitx-qt4
 fcitx-qt5
 fctix-ui-light
 meld
+k3b (cd ripping)
+fslint
+digikam?
+gpick
+invada-studio-plugins-lv2
+calf
+artyfx
+cpupower
+realtime-privliges
+ardour
+linvst
+wine
+ripgrep
 
 # Laptop only
 networkmanager

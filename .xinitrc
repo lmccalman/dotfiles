@@ -35,5 +35,6 @@ xrandr --dpi 192
 xsetroot -cursor_name left_ptr
 unclutter -grab -noevents -root &
 compton --config ~/.config/compton.conf &
+cadence-session-start --start
 fcitx &
 exec i3
