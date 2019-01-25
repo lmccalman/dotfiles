@@ -1,8 +1,7 @@
 
 
 # startup
-exec --no-startup-id ~/.config/i3/init-wm.sh
-
+exec_always --no-startup-id ~/.config/i3/init-wm.sh
 
 # modifier = Alt, $sup = Wind0ws key
 set $mod Mod1
@@ -144,26 +143,26 @@ set $darkgray #1d2021
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        # height in pixels
-        height 40
-        status_command $HOME/.config/i3/conky-i3bar.sh
-        font pango:Source Code Pro, FontAwesome 9
-        position top
-        strip_workspace_numbers yes
-        colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section            
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+# bar {
+#         # height in pixels
+#         height 40
+#         status_command $HOME/.config/i3/conky-i3bar.sh
+#         font pango:Source Code Pro, FontAwesome 9
+#         position top
+#         strip_workspace_numbers yes
+#         colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section            
+#         #                    border  backgr. text
+#         focused_workspace    $aqua $aqua $darkgray
+#         inactive_workspace   $darkgray $darkgray $yellow
+#         active_workspace     $darkgray $darkgray $yellow
+#         urgent_workspace     $red $red $bg
+#     }
+# }
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
