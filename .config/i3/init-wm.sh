@@ -2,14 +2,12 @@
 
 # Terminate already running bar instances
 killall -q polybar
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-# Launch Polybar, using default config location ~/.config/polybar/config
-polybar mybar &
-
 dropbox &
 dunst &
-redshift &
+
+# workaround for redshift
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+redshift-gtk & 
 $HOME/.config/i3/wallpaper.sh &
 nm-applet --sm-disable &
-
+polybar mybar &

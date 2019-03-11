@@ -35,6 +35,8 @@ yay --answerclean NotInstalled
 passwd --add lb realtime
 cpupower frequency-set -g performance
 
+Alternatively try running at 1024 fpp. If there are still occasional, periodic x-runs, this hints at system-management IRQs (health checks: power/voltage, temperature, etc) and will be very hard to get rid of. If you have the option, disable some power-saving options in the BIOS, particularly pci-bus frequency scaling, EIST, and C1E halt-states.
+look at rtirq
 
 
 ## Non-free fonts
