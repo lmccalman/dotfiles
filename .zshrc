@@ -47,8 +47,8 @@ fi
 ### System aliases {{{
 alias ag='rg'
 alias shutdown="sudo shutdown -hP now"
-alias aoeu='setxkbmap us'
-alias asdf='setxkbmap dvorak'
+alias aoeu='setxkbmap -layout us'
+alias asdf='setxkbmap -layout us -variant dvorak'
 alias openports="netstat --all --numeric --programs --inet --inet6"
 alias ison="ps -A | grep $1"
 alias listfonts="fc-list | sed 's,:.*,,' | sort -u"

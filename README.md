@@ -58,6 +58,7 @@ otf-ipafont
 neovim
 python-neovim
 python-jedi
+python-pipenv
 i3
 rofi
 xclip
@@ -138,6 +139,8 @@ ardour
 linvst
 wine
 ripgrep
+google-cloud-sdk
+docker
 
 # Laptop only
 networkmanager
