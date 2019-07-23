@@ -59,6 +59,7 @@ Plug 'xtal8/traces.vim'
 Plug 'LnL7/vim-nix'
 Plug 'neovimhaskell/haskell-vim'
 " Plug 'alx741/vim-hindent'
+Plug 'Valloric/MatchTagAlways'
 
 " Etc
 " ---

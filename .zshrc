@@ -53,6 +53,7 @@ alias openports="netstat --all --numeric --programs --inet --inet6"
 alias ison="ps -A | grep $1"
 alias listfonts="fc-list | sed 's,:.*,,' | sort -u"
 alias fontinfo="otfinfo -f"
+alias usbmic="alsa_in -j usbmic -d hw:ATGM1USB"
 # }}}
 
 # Git {{{
