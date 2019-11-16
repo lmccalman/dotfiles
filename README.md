@@ -49,7 +49,6 @@ fonts-meta-extended-lt ## includes infinality subs
 xorg-fonts-misc
 go-fonts-git
 otf-font-awesome
-ttf-roboto
 adobe-source-code-pro-fonts
 adobe-source-han-sans-jp-fonts
 otf-ipafont

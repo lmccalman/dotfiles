@@ -2,6 +2,7 @@
 
 # Terminate already running bar instances
 killall -q polybar
+nm-applet &
 dropbox &
 dunst &
 

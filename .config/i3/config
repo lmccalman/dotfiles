@@ -18,7 +18,7 @@ workspace_layout tabbed
 new_window none
 new_float none
 
-gaps inner 10
+gaps inner 4
 gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position

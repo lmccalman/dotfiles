@@ -5,7 +5,7 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 Xft.dpi: 192
-Xcursor.size: 64
+Xcursor.size: 32
 
 rofi.color-enabled: true
 rofi.color-window: #151515, #151515, #888888

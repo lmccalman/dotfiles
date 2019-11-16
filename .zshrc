@@ -37,10 +37,10 @@ bindkey '^[[Z' autosuggest-execute
 
 ### termite {{{
 # allow the "open in current dir" command to work
-if [[ $TERM == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
-  __vte_osc7
-fi
+# if [[ $TERM == xterm-termite ]]; then
+  # . /etc/profile.d/vte.sh
+  # __vte_osc7
+# fi
 # }}}
 
 
@@ -96,7 +96,7 @@ alias hs="cut -d';' -f2  ~/.zsh_history | fzf"
 
 ### command-not-found {{{
 # pacin pkgfile
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 # }}}
 
 ### Syntax highlighting {{{
