@@ -1,7 +1,8 @@
 # dotfiles
 Current dotfiles on my linux machines
 
-I use adwaita-dark.
+I use breeze.
+configure for kde-based everything, with qt5ct and lxappearance of kde system
 Font for desktop is cantarell.
 Breeze snow cursor theme from KDE
 
