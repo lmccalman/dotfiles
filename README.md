@@ -59,6 +59,7 @@ python-neovim
 python-jedi
 python-pipenv
 i3
+alacritty
 rofi
 xclip
 xorg-server

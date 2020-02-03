@@ -7,7 +7,7 @@ dropbox &
 dunst &
 
 # workaround for redshift
-redshift-gtk & 
+# redshift-gtk & 
 $HOME/.config/i3/wallpaper.sh &
 nm-applet --sm-disable &
 polybar mybar &

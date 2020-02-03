@@ -1,7 +1,7 @@
 ### Basic ENVs {{{
 export EDITOR=/usr/bin/nvim
-export TERM=xterm-termite
-export TERMINAL=/usr/bin/termite
+export TERM=xterm-256color
+export TERMINAL=/usr/bin/alacritty
 # }}}
 
 ### GO {{{
@@ -18,6 +18,8 @@ export CUDA_HOME=/opt/cuda
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUAL_ENV_DISABLE_PROMPT=true
+export PIPENV_VENV_IN_PROJECT=1
+eval "$(pipenv --completion)"
 source /usr/bin/virtualenvwrapper.sh
 # }}}
 
@@ -53,7 +55,7 @@ alias openports="netstat --all --numeric --programs --inet --inet6"
 alias ison="ps -A | grep $1"
 alias listfonts="fc-list | sed 's,:.*,,' | sort -u"
 alias fontinfo="otfinfo -f"
-alias usbmic="alsa_in -j usbmic -d hw:ATGM1USB"
+alias usbmic="alsa_in -c 1 -j usbmic -d hw:ATGM1USB"
 # }}}
 
 # Git {{{
