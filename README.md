@@ -44,6 +44,8 @@ look at rtirq
 ttf-ms-win10
 
 ## Fonts
+look at nerd fonts -- include lots of patched symbols!
+
 fonts-meta-base
 ttf-google-fonts-typewolf
 fonts-meta-extended-lt ## includes infinality subs
