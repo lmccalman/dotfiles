@@ -2,6 +2,7 @@
 export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
 export TERMINAL=/usr/bin/alacritty
+export DEFAULT_USER=lb
 # }}}
 
 ### GO {{{
@@ -31,10 +32,41 @@ export ZSH=$HOME/.oh-my-zsh
 # shif + tab: execute suggestion
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 plugins=(cp dircycle dirpersist docker git git-flow-avh \
-  history-substring-search kubectl zsh-autosuggestions) 
+  history-substring-search kubectl zsh-autosuggestions vi-mode) 
 # ZSH_THEME="lb"
 
+function holyday() {
+HOLYDAY=$(ddate +%H)
+if [[ -n ${HOLYDAY} ]]; then
+  echo "-${blue_op}${HOLYDAY}${blue_cp}"
+fi
+}
+
 POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="┌"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="└"
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
+POWERLEVEL9K_CUSTOM_DDATE="ddate +%H"
+POWERLEVEL9K_CUSTOM_DDATE_BACKGROUND="blue"
+POWERLEVEL9K_CUSTOM_DDATE_FOREGROUND="yellow"
+POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
+POWERLEVEL9K_OS_ICON_BACKGROUND="015"
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND="black"
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND="blue"
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND="black"
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND="blue"
+POWERLEVEL9K_VI_MODE_VISUAL_FOREGROUND="black"
+POWERLEVEL9K_VI_MODE_VISUAL_BACKGROUND="blue"
+POWERLEVEL9K_VI_INSERT_MODE_STRING=''
+POWERLEVEL9K_VI_COMMAND_MODE_STRING=""
+POWERLEVEL9K_STATUS_OK_BACKGROUND='015'
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND='015'
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs custom_ddate virtualenv vi_mode newline background_jobs os_icon)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir status command_execution_time)
 ZSH_THEME="powerlevel9k/powerlevel9k"
 source $ZSH/oh-my-zsh.sh
 bindkey '^[[Z' autosuggest-execute

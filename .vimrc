@@ -69,6 +69,8 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'xtal8/traces.vim'
 Plug 'Valloric/MatchTagAlways'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 
 " Etc
 " ---
