@@ -39,8 +39,8 @@ Plug 'yuttie/comfortable-motion.vim'
 " ------------
 Plug 'tpope/vim-surround' "surrounding character pairs
 Plug 'junegunn/vim-easy-align' "align on characters
-" Plug 'tweekmonster/braceless.vim' "indentation levels
 Plug 'tpope/vim-commentary' "comments
+" Plug 'tweekmonster/braceless.vim' "indentation levels
 
 " Prose
 " -----
@@ -82,31 +82,29 @@ call plug#end()
 " === Plugin Configs ===
 
 " == fzf ==
-
-let g:fzf_nvim_statusline = 1 " disable statusline overwriting
+" let g:fzf_nvim_statusline = 0 " statusline overwriting?
 let g:fzf_command_prefix = 'Fzf'
-" Custom fzf#Ag
-command! -bang -nargs=* FzfAu call fzf#vim#grep('rg --type py --no-heading --line-number .$ ~/code/', 0)
-" ripgrep search. Useage :Find <str>
-command! -bang -nargs=* Find call fzf#vim#grep('rg --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-nnoremap <silent> <leader>g :FzfCommits<CR>
 nnoremap <silent> <leader>l :FzfLines<CR>
-nnoremap <silent> <leader>t :FzfTags<CR>
-nnoremap <silent> <leader>r :FzfAu<CR>
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX bullshit
-set wildignore+=*.luac                           " Lua byte code
-set wildignore+=migrations                       " Django migrations
-set wildignore+=*.pyc                            " Python byte code
-set wildignore+=*.orig                           " Merge resolution files
+nnoremap <silent> <leader>r :FzfRg<CR>
+nnoremap <silent> <leader>f :FzfFiles<CR>
+nnoremap <silent> <leader>b :FzfBuffers<CR>
 
 " == vim-sneak ==
 let g:sneak#label = 1
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 " == vim-hardtime ==
 let g:hardtime_allow_different_key = 1
@@ -285,28 +283,21 @@ set foldmethod=marker
 " ==== IO ====
 set hidden  " let me move buffers without saving
 set undodir=~/.vim/tmp/undo//     " undo files
-" set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
 endif
-" if !isdirectory(expand(&backupdir))
-"     call mkdir(expand(&backupdir), "p")
-" endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 " Enable undofiles (writebackup on by default)
 set undofile
-" set writebackup
 set autoread
-set autowrite
-" au FocusLost * :echo "Focus lost: saving all buffers" | :wall
 " Remove trailing whitespace in python
 autocmd BufWritePre *.py :%s/\s\+$//e
-" Save cursor, folds etc from last edit
 
+" Save cursor, folds etc from last edit
 set viewoptions-=options
 set sessionoptions-=options
 set viewoptions-=localoptions
@@ -349,34 +340,28 @@ set cursorline
 set colorcolumn=+1
 set laststatus=2
 
-" Visual Appearance
-set guifont=Anonymous\ Pro\ for\ Powerline\ 10
-
 let g:rainbow_active = 1
 
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-if !has('nvim')
-  set t_Co=256
-endif
 
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='medium'
 set background=dark    " Setting dark mode
-
 colorscheme gruvbox
 
-if has('gui_running')
-    set guioptions-=T   " Get rid of toolbar "
-    set guioptions-=m   " Get rid of menu    "
-    set guioptions+=LlRrb
-    set guioptions-=LlRrb
-endif
-
-
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
 
 
 " ==== Navigation ====
@@ -393,32 +378,8 @@ nnoremap VaB vaBV
 " Mouse tiem
 set mouse=a
 
-"replace 'f' with 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
-
-""" Quicker assisted find (usually leader-leader):
-map <leader>n <Plug>(easymotion-f)
-map <leader>N <Plug>(easymotion-F)
-
 " let g:neomake_open_list = 1
 " let g:neomake_list_height = 10
-
-
-let g:EasyMotion_keys='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-" }}}
-
 
 " ==== Editing ====
 "set backspace=eol,start,indent "Try not to use backspace!
@@ -437,24 +398,7 @@ nnoremap z= :echo "use zz you idiot"<cr>
 :nnoremap <F6> "=strftime("%d_%b_%Y")<CR>P
 :inoremap <F6> <C-R>=strftime("%d_%b_%Y")<CR>
 
-" default text object is P, alse try [[ and ]]
-autocmd FileType python BracelessEnable +indent
-autocmd FileType haml,yaml,coffee BracelessEnable +indent +fold
-
 let g:surround_indent = 1 "auto re-indent
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis
-                 \ | wincmd p | diffthis
-endif
-
-
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 0
-" let g:ale_open_list = 1
 
 
 augroup reload_vimrc " {
@@ -484,8 +428,6 @@ set autochdir
 nnoremap <leader>s :b#<CR>
 nnoremap <Leader>c :bd<CR>
 nnoremap <Leader>w :update<CR>
-nnoremap <silent> <leader>f :FzfFiles<CR>
-nnoremap <silent> <leader>b :FzfBuffers<CR>
 
 " ==== Clipboard and Undo ====
 set pastetoggle=<leader>p

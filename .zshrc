@@ -32,7 +32,10 @@ export ZSH=$HOME/.oh-my-zsh
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 plugins=(cp dircycle dirpersist docker git git-flow-avh \
   history-substring-search kubectl zsh-autosuggestions) 
-ZSH_THEME="lb"
+# ZSH_THEME="lb"
+
+POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel9k/powerlevel9k"
 source $ZSH/oh-my-zsh.sh
 bindkey '^[[Z' autosuggest-execute
 # }}}
