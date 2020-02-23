@@ -71,6 +71,7 @@ Plug 'xtal8/traces.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Etc
 " ---

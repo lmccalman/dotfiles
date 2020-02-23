@@ -82,6 +82,7 @@ fi
 
 
 ### System aliases {{{
+alias ls='lsd'
 alias ag='rg'
 alias shutdown="sudo shutdown -hP now"
 alias aoeu='setxkbmap -layout us'
