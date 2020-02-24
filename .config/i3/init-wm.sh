@@ -2,6 +2,7 @@
 
 # Terminate already running bar instances
 killall -q polybar
+cadence-session-start --start
 dropbox &
 dunst &
 

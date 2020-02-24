@@ -35,6 +35,4 @@ xrandr --dpi 192
 xsetroot -cursor_name left_ptr
 unclutter -grab -noevents -root &
 picom -b --config ~/.config/picom/picom.conf
-cadence-session-start --start
-# fcitx &
 exec i3
