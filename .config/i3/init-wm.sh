@@ -10,4 +10,5 @@ dunst &
 # redshift-gtk & 
 $HOME/.config/i3/wallpaper.sh &
 nm-applet --sm-disable &
+blueman-tray &
 polybar mybar &
