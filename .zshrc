@@ -134,7 +134,7 @@ alias hs="cut -d';' -f2  ~/.zsh_history | fzf"
 
 ### command-not-found {{{
 # pacin pkgfile
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 # }}}
 
 ### Syntax highlighting {{{
