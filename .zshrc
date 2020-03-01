@@ -91,7 +91,8 @@ alias openports="netstat --all --numeric --programs --inet --inet6"
 alias ison="ps -A | grep $1"
 alias listfonts="fc-list | sed 's,:.*,,' | sort -u"
 alias fontinfo="otfinfo -f"
-alias usbmic="alsa_in -c 1 -j usbmic -d hw:ATGM1USB"
+alias usbmic="zita-a2j -c 1 -j usbmic -d hw:ATGM1USB"
+alias vidmic="zita-a2j -j vidmic -d hw:Webcam -r 32000"
 # }}}
 
 # Git {{{
