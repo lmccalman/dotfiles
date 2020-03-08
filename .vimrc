@@ -69,8 +69,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'xtal8/traces.vim'
 Plug 'Valloric/MatchTagAlways'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
 Plug 'ryanoasis/vim-devicons'
 
 " Etc
@@ -87,10 +85,10 @@ call plug#end()
 " == fzf ==
 " let g:fzf_nvim_statusline = 0 " statusline overwriting?
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent> <leader>l :FzfLines<CR>
-nnoremap <silent> <leader>r :FzfRg<CR>
-nnoremap <silent> <leader>f :FzfFiles<CR>
-nnoremap <silent> <leader>b :FzfBuffers<CR>
+nnoremap <silent> <leader>l :FzfLines <CR>
+nnoremap <silent> <leader>r :FzfRg <CR>
+nnoremap <silent> <leader>f :FzfFiles <CR>
+nnoremap <silent> <leader>b :FzfBuffers <CR>
 
 " == vim-sneak ==
 let g:sneak#label = 1
