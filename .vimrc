@@ -56,6 +56,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-python
 " :CocInstall coc-vimtex
 " :CocInstall coc-rls
+" :CocInstall coc-json
 
 
 " Visual
