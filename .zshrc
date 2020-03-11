@@ -123,8 +123,8 @@ alias csirovpn='sudo openconnect -u mcc542 --authgroup=CSIRO-LOCAL-LAN vpn.csiro
 # }}}
 
 ### Monitors {{{
-alias atdesk='xrandr --output eDP-1 --off --output DP-1-2 --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output DP-1-3 --off --output DP-2 --off --output DP-1-1 --off'
-alias onthemove='xrandr --output eDP-1 --mode 3840x2160 --pos 0x0 --rotate normal --output DP-1-2 --off --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output DP-1-3 --off --output DP-2 --off --output DP-1-1 --off'
+alias atdesk='~/.screenlayout/atdesk.sh'
+alias onthemove='~/.screenlayout/onthemove.sh'
 # }}}
 
 ### FZF {{{
