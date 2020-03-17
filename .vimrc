@@ -82,8 +82,9 @@ Plug 'simnalamburt/vim-mundo'
 call plug#end()
 
 " === Neovide Settings ===
-set guifont=Go\ Mono\ Nerd\ Font:h16
-let g:neovide_cursor_vfx_mode = "railgun"
+"set guifont=Go\ Mono\ Nerd\ Font:h16
+set guifont=FiraCode\ Nerd\ Font\ Retina:h16
+let g:neovide_cursor_vfx_mode = "pixiedust"
 
 
 " ==== Big Changes ====
