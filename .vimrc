@@ -169,6 +169,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
+let g:gruvbox_bold=1
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='medium'
 set background=dark    " Setting dark mode
