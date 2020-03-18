@@ -54,7 +54,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-snippts
 " :CocInstall coc-python
-" :CocInstall coc-vimtex
+" :CocInstall coc-texlab
 " :CocInstall coc-rls
 " :CocInstall coc-json
 
