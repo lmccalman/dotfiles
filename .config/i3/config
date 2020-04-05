@@ -11,8 +11,14 @@ focus_follows_mouse yes
 
 font pango: Cantarell, FontAwesome 9
 
+
+# toggle split direction for each window
+default_orientation vertical
+for_window [class="^"] split toggle
+
 # I really only have 1 screen
-workspace_layout tabbed
+# workspace_layout tabbed
+workspace_layout default
 
 # Don't waste pixels
 new_window none
