@@ -56,6 +56,9 @@ adobe-source-han-sans-jp-fonts
 otf-ipafont
 
 ## My Packages
+firefox-trydactyl-native
+pactl
+xss-lock
 neovim
 python-neovim
 python-jedi

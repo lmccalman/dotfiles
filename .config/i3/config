@@ -1,4 +1,15 @@
+# i3 config file (v4)
 
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # startup
 exec_always --no-startup-id ~/.config/i3/init-wm.sh
@@ -9,16 +20,13 @@ set $sup Mod4
 
 focus_follows_mouse yes
 
-font pango: Cantarell, FontAwesome 9
+font pango: FiraCode Nerd Font 8
 
 
 # toggle split direction for each window
 default_orientation vertical
-for_window [class="^"] split toggle
 
-# I really only have 1 screen
-# workspace_layout tabbed
-workspace_layout default
+workspace_layout tabbed
 
 # Don't waste pixels
 new_window none
@@ -39,11 +47,23 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
 # move focused window
 bindsym $mod+Shift+H move left
 bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+z split h
@@ -61,10 +81,10 @@ bindsym $mod+period layout splith
 bindsym $mod+p layout splitv
 
 # toggle tiling / floating
-bindsym $mod+Shift+t floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+t focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+plus focus parent
@@ -72,29 +92,54 @@ bindsym $mod+plus focus parent
 # focus the child container
 bindsym $mod+hyphen focus child
 
+set $ws1 "1:1"
+set $ws2 "2:2"
+set $ws3 "3:3"
+set $ws4 "4:4"
+set $ws5 "5:5"
+set $ws6 "6:A6"
+set $ws7 "7:A7"
+set $ws8 "8:A8"
+set $ws9 "9:A9"
+set $ws0 "0:A0"
+
+
+# DP-0
+# HDMI-1
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
+workspace $ws8 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws0 output HDMI-1
+
 # switch to workspace
-bindsym $mod+1 workspace 1:I
-bindsym $mod+2 workspace 2:II
-bindsym $mod+3 workspace 3:III
-bindsym $mod+4 workspace 4:IV
-bindsym $mod+5 workspace 5:V
-bindsym $mod+6 workspace 6:VI
-bindsym $mod+7 workspace 7:VII
-bindsym $mod+8 workspace 8:VIII
-bindsym $mod+9 workspace 9:IX
-bindsym $mod+0 workspace 10:X
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:I
-bindsym $mod+Shift+2 move container to workspace 2:II
-bindsym $mod+Shift+3 move container to workspace 3:III
-bindsym $mod+Shift+4 move container to workspace 4:IV
-bindsym $mod+Shift+5 move container to workspace 5:V
-bindsym $mod+Shift+6 move container to workspace 6:VI
-bindsym $mod+Shift+7 move container to workspace 7:VII
-bindsym $mod+Shift+8 move container to workspace 8:VIII
-bindsym $mod+Shift+9 move container to workspace 9:IX
-bindsym $mod+Shift+0 move container to workspace 10:X
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 # reload the configuration file
 #bindsym $mod+Shift+J reload
@@ -126,7 +171,7 @@ bindsym $mod+Tab exec rofi -show window
 bindsym $sup+r exec "rofi -combi-modi window,run -show combi -modi combi"
 bindsym $sup+Return exec kitty
 bindsym $sup+f exec firefox-developer-edition
-bindsym $sup+v exec neovide
+bindsym $sup+v exec kitty -e nvim
 bindsym $sup+g exec gwenview
 bindsym $sup+s exec slack
 bindsym $sup+m exec spotify
