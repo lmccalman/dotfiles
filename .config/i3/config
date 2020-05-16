@@ -20,7 +20,7 @@ set $sup Mod4
 
 focus_follows_mouse yes
 
-font pango: FiraCode Nerd Font 8
+font pango: OperatorMono Nerd Font 11
 
 
 # toggle split direction for each window

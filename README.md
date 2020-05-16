@@ -31,6 +31,8 @@ yay --sudoloop
 yay --answeredit None
 yay --answerclean NotInstalled
 
+## commands I often forget
+use pdftk for pdf joining etc
 
 ## audio
 passwd --add lb realtime

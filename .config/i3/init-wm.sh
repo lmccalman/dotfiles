@@ -11,5 +11,6 @@ dunst &
 $HOME/.config/i3/wallpaper.sh &
 nm-applet --sm-disable &
 blueman-tray &
+dropbox &
 polybar mainbar &
 polybar altbar &
