@@ -1,6 +1,6 @@
 [user]
 	name = Lachlan McCalman
-	email = lachlan.mccalman@data61.csiro.au
+	email = lachlan@mccalman.info
 
 [diff]
   tool = meld
@@ -18,3 +18,5 @@
 
 [alias]
 	pmerge = merge -X patience --
+[pull]
+	rebase = true
