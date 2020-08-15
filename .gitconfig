@@ -19,4 +19,4 @@
 [alias]
 	pmerge = merge -X patience --
 [pull]
-	rebase = true
+	rebase = false

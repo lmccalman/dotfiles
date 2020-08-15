@@ -33,6 +33,7 @@ yay --answerclean NotInstalled
 
 ## commands I often forget
 use pdftk for pdf joining etc
+use ytop for htop with graphs
 
 ## audio
 passwd --add lb realtime
