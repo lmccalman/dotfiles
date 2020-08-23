@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 source /usr/bin/virtualenvwrapper.sh
 
 
+bindkey '^[[Z' autosuggest-execute
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

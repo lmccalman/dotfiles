@@ -2,6 +2,16 @@
 	name = Lachlan McCalman
 	email = lachlan@mccalman.info
 
+[core]
+    pager = delta
+
+[delta]
+    side-by-side = true
+    syntax-theme = gruvbox
+
+[interactive]
+    diffFilter = delta --color-only
+
 [diff]
   tool = meld
 	algorithm = patience
