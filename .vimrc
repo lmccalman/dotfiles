@@ -71,6 +71,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'xtal8/traces.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ron-rs/ron.vim'
+Plug 'cespare/vim-toml'
 
 " Etc
 " ---

@@ -1,3 +1,11 @@
 {
-    "workbench.colorTheme": "Gruvbox Dark (Hard)"
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "editor.columnSelection": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ]
+    ],
 }
