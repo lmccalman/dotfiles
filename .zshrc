@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # eval "$(pipenv --completion)"
 source /usr/bin/virtualenvwrapper.sh
 
+eval "$(zoxide init zsh)"
 
 bindkey '^[[Z' autosuggest-execute
 
@@ -113,6 +114,7 @@ bindkey '^[[Z' autosuggest-execute
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # System aliases
+alias find="fd"
 alias htop="bashtop"
 alias cat='bat'
 alias ls='lsd'
