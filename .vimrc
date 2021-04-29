@@ -55,7 +55,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-snippts
 " :CocInstall coc-python
 " :CocInstall coc-texlab
-" :CocInstall coc-rls
+" :CocInstall coc-rust-analyzer
 " :CocInstall coc-json
 
 
