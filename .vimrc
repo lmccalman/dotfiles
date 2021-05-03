@@ -76,6 +76,7 @@ Plug 'cespare/vim-toml'
 
 " Etc
 " ---
+Plug 'tpope/vim-fugitive' " git especially merging over cmdline
 Plug 'tpope/vim-eunuch' "for :SudoWrite and etc
 Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
 Plug 'AndrewRadev/splitjoin.vim' "1 line ifs / multiline ifs
