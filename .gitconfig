@@ -2,23 +2,15 @@
 	name = Lachlan McCalman
 	email = lachlan@mccalman.info
 
-[core]
-    pager = delta
-
-[delta]
-    side-by-side = true
-    syntax-theme = gruvbox
-
-[interactive]
-    diffFilter = delta --color-only
-
-[diff]
-  tool = meld
-	algorithm = patience
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 
 [merge]
-	tool = meld
-  conflictstyle = diff3
+	tool = nvim
+
+[mergetool]
+  prompt = false
+  keepBackup = false
 
 [push]
 	default = simple
@@ -26,7 +18,8 @@
 [github]
 	user = lmccalman
 
-[alias]
-	pmerge = merge -X patience --
 [pull]
 	rebase = false
+
+[init]
+	defaultBranch = main
