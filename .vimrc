@@ -94,7 +94,12 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+" let g:indent_blankline_space_char_highlight_list = ['CursorLine', 'Function']
+let g:indent_blankline_use_treesitter = v:true
 let g:indent_blankline_show_current_context = v:true
+" let g:indent_blankline_show_trailing_blankline_indent = v:false
+let g:indent_blankline_show_first_indent_level = v:false
+let g:indent_blankline_context_patterns = ['class', 'function', 'method', 'if', 'let', 'match']
 
 " === Neovide Settings ===
 set guifont=OperatorMono\ Nerd\ Font:h32
