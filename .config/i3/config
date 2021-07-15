@@ -179,6 +179,7 @@ bindsym $sup+l exec i3lock -c 000000
 
 # Floating windows
 for_window [class="denemo" instance="Denemo"] floating enable
+for_window [class="consecrate"] floating enable
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
@@ -228,3 +229,4 @@ client.focused          $blue $blue $darkgray $purple $darkgray
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent $red $red $white $red $red
+

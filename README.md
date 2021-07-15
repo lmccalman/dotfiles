@@ -27,10 +27,6 @@ For making new SSH keys:
   ssh-keygen -t ed25519
 
 
-yay --sudoloop
-yay --answeredit None
-yay --answerclean NotInstalled
-
 ## commands I often forget
 use pdftk for pdf joining etc
 use ytop for htop with graphs
@@ -72,8 +68,7 @@ rofi
 xclip
 xorg-server
 xorg-apps
-go
-yay
+paru
 ddate
 jre10-openjdk-headless
 xorg-apps

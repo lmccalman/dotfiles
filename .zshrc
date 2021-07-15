@@ -134,17 +134,17 @@ alias vidmic="zita-a2j -j vidmic -d hw:Webcam -r 32000"
 # Git
 alias gtree='git log --oneline --decorate --graph --all'
 
-# yay
-alias pacall='yay -Qq' # list all installed packages
-alias pacexp='yay -Qqett' # explicitly installed packages
-alias pacupg='yay -Syu --noconfirm' # sync and upgrade
-alias pacin='yay -S' # install
-alias pacrem='yay -Rns' # remove
-alias pacinf='yay -Si' # show info
-alias pacs='yay -Ss' # search
-alias pacfiles='yay -Ql' # list the files from a certain pacagke
-alias pacwhich='yay -Qo' # which package has that file
-alias pacclean='yay -Qdtq | yay -Rs -' # kill unneeded pacs
+# paru
+alias pacall='paru -Qq' # list all installed packages
+alias pacexp='paru -Qqett' # explicitly installed packages
+alias pacupg='paru -Syu --noconfirm' # sync and upgrade
+alias pacin='paru -S' # install
+alias pacrem='paru -Rns' # remove
+alias pacinf='paru -Si' # show info
+alias pacs='paru -Ss' # search
+alias pacfiles='paru -Ql' # list the files from a certain pacagke
+alias pacwhich='paru -Qo' # which package has that file
+alias pacclean='paru -Qdtq | paru -Rs -' # kill unneeded pacs
 
 # Monitors
 alias atdesk='~/.screenlayout/atdesk.sh'
@@ -155,3 +155,18 @@ alias onthemove='~/.screenlayout/onthemove.sh'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzfx
+alias fcd='cd "$(fzfx cd)"'
+
+# UBP project
+alias ubp='CLOUDSDK_COMPUTE_ZONE=$GCP_ZONE gcloud --project="ubp-fair"'
+ubp-ssh() {
+    gcloud compute ssh secure@${1:-devbox2-$USER} --zone=$GCP_ZONE --project="ubp-fair" --tunnel-through-iap -- -Y -C -L 8888:localhost:8888
+}
+ubp-upload() {
+    gcloud compute scp $1 secure@${3:-devbox2-$USER}:$2 --zone=$GCP_ZONE --project="ubp-fair" --tunnel-through-iap --recurse
+}
+ubp-download() {
+    gcloud compute scp secure@${3:-devbox2-$USER}:$1 ${2:-.} --zone=$GCP_ZONE --project="ubp-fair" --tunnel-through-iap --recurse
+}

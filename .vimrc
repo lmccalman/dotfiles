@@ -15,72 +15,70 @@
 " ==== Plugins ====
 
 " auto-install plug if it doesn't exist
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.vim/plugged')
 
 " Buffers and Search
 " ------------------
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Plug 'antoinemadec/coc-fzf'
+" TODO: look into this
+" needs bat installed
 
 " Navigation
 " ----------
-Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
-Plug 'bkad/CamelCaseMotion'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'phaazon/hop.nvim'
+Plug 'Yilin-Yang/vim-markbar'
 
 " Text 
 " ------------
-Plug 'tpope/vim-surround' "surrounding character pairs
-Plug 'junegunn/vim-easy-align' "align on characters
 Plug 'tpope/vim-commentary' "comments
-" Plug 'tweekmonster/braceless.vim' "indentation levels
-
-" Prose
-" -----
-Plug 'lervag/vimtex'
 
 " Snippets and completion
 " -----------------------
-Plug 'raimondi/delimitmate'
-Plug 'honza/vim-snippets'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-snippts
-" :CocInstall coc-python
-" :CocInstall coc-texlab
+" :CocInstall coc-pyright
 " :CocInstall coc-rust-analyzer
-" :CocInstall coc-json
+" :CocInstall coc-pairs
 
 
 " Visual
 " ------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kshenoy/vim-signature' "for displaying marks on the left ruler
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'xtal8/traces.vim'
-Plug 'Valloric/MatchTagAlways'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ron-rs/ron.vim'
-Plug 'cespare/vim-toml'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Etc
 " ---
 Plug 'tpope/vim-fugitive' " git especially merging over cmdline
 Plug 'tpope/vim-eunuch' "for :SudoWrite and etc
 Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
-Plug 'AndrewRadev/splitjoin.vim' "1 line ifs / multiline ifs
 Plug 'simnalamburt/vim-mundo'
+
+" Bench
+" -----
+" Plug 'raimondi/delimitmate'
+" Plug 'honza/vim-snippets'
+" Plug 'hynek/vim-python-pep8-indent'
+" Plug 'tpope/vim-surround' "surrounding character pairs
+" Plug 'junegunn/vim-easy-align' "align on characters
+" Plug 'Valloric/MatchTagAlways'
+" Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -331,6 +329,18 @@ nnoremap gdm :diffget //3<CR>
 
 " === Plugin Configs ===
 
+
+" == markbar ==
+
+" Jump to marks using <Enter>,
+" Move the cursor to the next mark in the markbar using n,
+" Move the cursor to the previous mark in the markbar using N,
+" Rename marks using r,
+" Clear the name of a mark using c,
+" Delete marks entirely using d.
+" peekaboo press ' or `
+nmap <Leader>m <Plug>ToggleMarkbar
+
 " == fzf ==
 " let g:fzf_nvim_statusline = 0 " statusline overwriting?
 let g:fzf_command_prefix = 'Fzf'
@@ -359,6 +369,7 @@ omap T <Plug>Sneak_T
 " == vim-hardtime ==
 let g:hardtime_allow_different_key = 1
 let g:hardtime_default_on = 1
+let g:hardtime_maxcount = 2
 let g:list_of_normal_keys = ["h", "j", "k", "l"]
 let g:list_of_visual_keys = ["h", "j", "k", "l"]
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
@@ -391,7 +402,6 @@ let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 2
 
 " == Coc ==
-
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
@@ -504,6 +514,9 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+ nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
 
 " == airline
 let g:airline_theme='gruvbox'
