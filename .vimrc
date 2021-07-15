@@ -14,6 +14,8 @@
 
 " ==== Plugins ====
 
+filetype plugin indent on
+
 " auto-install plug if it doesn't exist
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -45,11 +47,6 @@ Plug 'tpope/vim-commentary' "comments
 " Snippets and completion
 " -----------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" :CocInstall coc-snippts
-" :CocInstall coc-pyright
-" :CocInstall coc-rust-analyzer
-" :CocInstall coc-pairs
-
 
 " Visual
 " ------
@@ -62,6 +59,9 @@ Plug 'xtal8/traces.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ron-rs/ron.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+":TSInstall python
+":TSInstall rust
 
 " Etc
 " ---
@@ -82,15 +82,28 @@ Plug 'simnalamburt/vim-mundo'
 
 call plug#end()
 
+let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-rust-analyzer', 'coc-pairs']
+
+" === Tree sitter settings ===
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+let g:indent_blankline_show_current_context = v:true
+
 " === Neovide Settings ===
-"set guifont=Go\ Mono\ Nerd\ Font:h16
-set guifont=FiraCode\ Nerd\ Font\ Retina:h16
+set guifont=OperatorMono\ Nerd\ Font:h32
 let g:neovide_cursor_vfx_mode = "pixiedust"
 
 
 " ==== Big Changes ====
 noremap! jk <Esc>
-nnoremap <Space> :
+" nnoremap <Space> :
 nnoremap <cr> o<esc>
 let mapleader = ","
 " No Entering Ex mode
@@ -99,9 +112,6 @@ nnoremap Q gqip
 vnoremap Q gq
 
 " ==== Folding ====
-" set foldclose=all
-" set foldlevel=0
-" set foldlevelstart=0
 set foldmethod=marker
 
 " ==== IO ====
@@ -127,30 +137,29 @@ set sessionoptions-=options
 set viewoptions-=localoptions
 set sessionoptions-=localoptions
 
-autocmd BufReadPost *
-\ if line("'\"") >= 1 && line("'\"") <= line("$") |
-\   execute "normal! g`\"" |
-\ endif
+" what does this do??
+" autocmd BufReadPost *
+" \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+" \   execute "normal! g`\"" |
+" \ endif
 
 " ==== Formatting ====
-set autoindent
 set formatoptions=tcnjq1
-set linebreak
 set expandtab
-set softtabstop=-1
-set shiftwidth=0
-set shiftround
-set tabstop=2
-set textwidth=79
+" set shiftwidth=0
+" set shiftround
+" set softtabstop=2
+" set tabstop=2
+" set textwidth=79
 set virtualedit=block
-set wrap
+set nowrap
 "}}}
 
 
 " ==== Display ====
 set termguicolors
 set number
-set relativenumber " off so I use S more
+" set relativenumber " off so I use S more
 set title
 set ruler
 set scrolloff=9999
@@ -164,11 +173,8 @@ set cursorline
 set colorcolumn=+1
 set laststatus=2
 
-let g:rainbow_active = 1
-
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 
 let g:gruvbox_bold=1
 let g:gruvbox_italic=1
@@ -176,17 +182,17 @@ let g:gruvbox_contrast_dark='medium'
 set background=dark    " Setting dark mode
 colorscheme gruvbox
 
-set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
-set wildignore+=*.spl                            " compiled spelling word lists
-set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX bullshit
-set wildignore+=*.luac                           " Lua byte code
-set wildignore+=migrations                       " Django migrations
-set wildignore+=*.pyc                            " Python byte code
-set wildignore+=*.orig                           " Merge resolution files
+" set wildignore+=.hg,.git,.svn                    " Version control
+" set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+" set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+" set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+" set wildignore+=*.spl                            " compiled spelling word lists
+" set wildignore+=*.sw?                            " Vim swap files
+" set wildignore+=*.DS_Store                       " OSX bullshit
+" set wildignore+=*.luac                           " Lua byte code
+" set wildignore+=migrations                       " Django migrations
+" set wildignore+=*.pyc                            " Python byte code
+" set wildignore+=*.orig                           " Merge resolution files
 
 
 " ==== Navigation ====
@@ -202,9 +208,6 @@ nnoremap VaB vaBV
 
 " Mouse tiem
 set mouse=a
-
-" let g:neomake_open_list = 1
-" let g:neomake_list_height = 10
 
 " ==== Editing ====
 "set backspace=eol,start,indent "Try not to use backspace!
@@ -223,7 +226,7 @@ nnoremap z= :echo "use zz you idiot"<cr>
 :nnoremap <F6> "=strftime("%d_%b_%Y")<CR>P
 :inoremap <F6> <C-R>=strftime("%d_%b_%Y")<CR>
 
-let g:surround_indent = 1 "auto re-indent
+" let g:surround_indent = 1 "auto re-indent
 
 
 augroup reload_vimrc " {
@@ -260,75 +263,73 @@ set clipboard=unnamed,unnamedplus
 
 " Select (charwise) the contents of the current line, excluding indentation.
 " Great for pasting Python lines into REPLs.
-nnoremap vv ^vg_
+" nnoremap vv ^vg_
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested lwindow
 
 
 " ==== Filetypes ====
 au BufRead,BufNewFile *.dock setfiletype dockerfile
 au BufNewFile,BufRead *.md set filetype=markdown
-au BufNewFile,BufRead *.mako set filetype=mako
+
 " ensures latex not plaintex chosen when opening a blank .tex file
 let g:tex_flavor='latex'
 
-function! MyFormatExpr(start, end)
-    silent execute a:start.','.a:end.'s/[.!?]\zs /\r/g'
-endfunction
+" function! MyFormatExpr(start, end)
+"     silent execute a:start.','.a:end.'s/[.!?]\zs /\r/g'
+" endfunction
 
 
-augroup ft_tex
-    au!
-    au FileType tex setlocal formatoptions="" 
-    au FileType tex setlocal textwidth=0
-    au FileType tex setlocal wrapmargin=0
-    au FileType tex setlocal wrap
-    au FileType tex setlocal linebreak
-    au FileType tex setlocal breakindent
-    au FileType tex setlocal shiftwidth=2 
-    au FileType tex setlocal tabstop=2 
-    au FileType tex setlocal spelllang=en_gb 
-    au FileType tex setlocal iskeyword+=: 
-    au FileType tex setlocal formatexpr=MyFormatExpr(v:lnum,v:lnum+v:count-1)
-augroup END
-augroup ft_python
-    au!
-    au FileType python setlocal formatoptions=cqr 
-    au FileType python let b:delimitMate_expand_inside_quotes = 1
-    au FileType python let b:delimitMate_nesting_quotes = ['"']
-augroup END
-augroup ft_markdown
-  au!
-  au FileType markdown setlocal commentstring=[//]\:\ \#\ (%s)
-augroup END
-augroup ft_cpp
-  au!
-  au FileType cpp setlocal commentstring=//\ %s
-augroup END
-augroup ft_mail
-  " Mail
-  autocmd BufRead,BufNewFile *mutt-* setfiletype mail 
-  autocmd BufRead,BufNewFile *mutt-* setlocal tw=72 spell formatoptions=tcqj
-augroup END
+" augroup ft_tex
+"     au!
+"     au FileType tex setlocal formatoptions="" 
+"     au FileType tex setlocal textwidth=0
+"     au FileType tex setlocal wrapmargin=0
+"     au FileType tex setlocal wrap
+"     au FileType tex setlocal linebreak
+"     au FileType tex setlocal breakindent
+"     au FileType tex setlocal shiftwidth=2 
+"     au FileType tex setlocal tabstop=2 
+"     au FileType tex setlocal spelllang=en_gb 
+"     au FileType tex setlocal iskeyword+=: 
+"     au FileType tex setlocal formatexpr=MyFormatExpr(v:lnum,v:lnum+v:count-1)
+" augroup END
+" augroup ft_python
+"     au!
+"     au FileType python setlocal formatoptions=cqr 
+"     au FileType python let b:delimitMate_expand_inside_quotes = 1
+"     au FileType python let b:delimitMate_nesting_quotes = ['"']
+" augroup END
+" augroup ft_markdown
+"   au!
+"   au FileType markdown setlocal commentstring=[//]\:\ \#\ (%s)
+" augroup END
+" augroup ft_cpp
+"   au!
+"   au FileType cpp setlocal commentstring=//\ %s
+" augroup END
+" augroup ft_mail
+"   " Mail
+"   autocmd BufRead,BufNewFile *mutt-* setfiletype mail 
+"   autocmd BufRead,BufNewFile *mutt-* setlocal tw=72 spell formatoptions=tcqj
+" augroup END
 
 " === Git merging ===
 nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap gdt :diffget //2<CR> 
 nnoremap gdm :diffget //3<CR>
 
-
-
-
-
-
-
-
-
 " === Plugin Configs ===
 
+" == hop
+" :HopWord: hop around by highlighting words.
+" :HopPattern: hop around by matching against a pattern (as with /).
+" :HopChar1: type a single key and hop to any occurrence of that key in the document.
+" :HopChar2: type a bigram (two keys) and hop to any occurrence of that bigram in the document.
+" :HopLine: jump to any visible line in your buffer.
 
 " == markbar ==
 
@@ -350,21 +351,21 @@ nnoremap <silent> <leader>f :FzfFiles<CR>
 nnoremap <silent> <leader>b :FzfBuffers<CR>
 
 " == vim-sneak ==
-let g:sneak#label = 1
-"replace 'f' with 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
+"let g:sneak#label = 1
+""replace 'f' with 1-char Sneak
+"nmap f <Plug>Sneak_f
+"nmap F <Plug>Sneak_F
+"xmap f <Plug>Sneak_f
+"xmap F <Plug>Sneak_F
+"omap f <Plug>Sneak_f
+"omap F <Plug>Sneak_F
+""replace 't' with 1-char Sneak
+"nmap t <Plug>Sneak_t
+"nmap T <Plug>Sneak_T
+"xmap t <Plug>Sneak_t
+"xmap T <Plug>Sneak_T
+"omap t <Plug>Sneak_t
+"omap T <Plug>Sneak_T
 
 " == vim-hardtime ==
 let g:hardtime_allow_different_key = 1
@@ -373,46 +374,64 @@ let g:hardtime_maxcount = 2
 let g:list_of_normal_keys = ["h", "j", "k", "l"]
 let g:list_of_visual_keys = ["h", "j", "k", "l"]
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-nnoremap <leader>h :HardTimeToggle
+" nnoremap <leader>h :HardTimeToggle
 
 " == CamelCaseMotion ==
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-omap <silent> iw <Plug>CamelCaseMotion_iw
-xmap <silent> iw <Plug>CamelCaseMotion_iw
-omap <silent> ib <Plug>CamelCaseMotion_ib
-xmap <silent> ib <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap w
+" sunmap b
+" sunmap e
+" sunmap ge
+" omap <silent> iw <Plug>CamelCaseMotion_iw
+" xmap <silent> iw <Plug>CamelCaseMotion_iw
+" omap <silent> ib <Plug>CamelCaseMotion_ib
+" xmap <silent> ib <Plug>CamelCaseMotion_ib
+" omap <silent> ie <Plug>CamelCaseMotion_ie
+" xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 " == vim-easy-align ==
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+" xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)
 
 " == delimitMate ==
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 2
+" let delimitMate_expand_space = 1
+" let delimitMate_expand_cr = 2
 
 " == Coc ==
-" Some servers have issues with backup files, see #649
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-" Better display for messages
+
+" Give more space for displaying messages.
 set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
 set updatetime=300
-" don't give |ins-completion-menu| messages.
+
+" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" always show signcolumns
-set signcolumn=yes
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -429,94 +448,129 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-
-
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" Remap keys for gotos
+
+" GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window
+
+" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-" Highlight symbol under cursor on CursorHold
+
+" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-" Remap for rename current word
+
+" Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-" Remap for format selected region
-xmap <leader>cf  <Plug>(coc-format-selected)
-nmap <leader>cf  <Plug>(coc-format-selected)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
+  " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
-" Remap for do codeAction of current line
+
+" Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
+" Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
-" Create mappings for function text object, requires document symbols feature of languageserver.
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-" Use `:Format` to format current buffer
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
-" Use `:Fold` to fold current buffer
+
+" Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-" use `:OR` for organize import of current buffer
+
+" Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
- nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
+" TODO explore this
+" nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
 
 " == airline
 let g:airline_theme='gruvbox'
@@ -536,5 +590,5 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " == mundo
-nnoremap <F5> :MundoToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
 
