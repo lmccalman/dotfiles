@@ -52,7 +52,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " ------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'xtal8/traces.vim'
@@ -83,6 +83,10 @@ Plug 'simnalamburt/vim-mundo'
 call plug#end()
 
 let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-rust-analyzer', 'coc-pairs']
+
+lua << EOF
+require'hop'.setup()
+EOF
 
 " === Tree sitter settings ===
 
@@ -183,9 +187,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 let g:gruvbox_bold=1
 let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='medium'
 set background=dark    " Setting dark mode
-colorscheme gruvbox
+colorscheme gruvbox8
 
 " set wildignore+=.hg,.git,.svn                    " Version control
 " set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -335,6 +338,7 @@ nnoremap gdm :diffget //3<CR>
 " :HopChar1: type a single key and hop to any occurrence of that key in the document.
 " :HopChar2: type a bigram (two keys) and hop to any occurrence of that bigram in the document.
 " :HopLine: jump to any visible line in your buffer.
+nmap s :HopChar2
 
 " == markbar ==
 
@@ -578,7 +582,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
 
 " == airline
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
