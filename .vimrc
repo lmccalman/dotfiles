@@ -39,6 +39,7 @@ Plug 'takac/vim-hardtime'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'phaazon/hop.nvim'
 Plug 'Yilin-Yang/vim-markbar'
+Plug 'dbakker/vim-paragraph-motion'
 
 " Text 
 " ------------
@@ -50,6 +51,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Visual
 " ------
+"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-gruvbox8'
@@ -167,7 +169,7 @@ set nowrap
 
 " ==== Display ====
 set termguicolors
-set number
+" set number
 " set relativenumber " off so I use S more
 set title
 set ruler
@@ -331,6 +333,14 @@ nnoremap gdt :diffget //2<CR>
 nnoremap gdm :diffget //3<CR>
 
 " === Plugin Configs ===
+"
+
+" == Comfortable-motion
+let g:comfortable_motion_no_default_key_mappings = 1
+nnoremap <silent> L :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> H :call comfortable_motion#flick(-100)<CR>
+" noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+" noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 
 " == hop
 " :HopWord: hop around by highlighting words.
@@ -338,7 +348,7 @@ nnoremap gdm :diffget //3<CR>
 " :HopChar1: type a single key and hop to any occurrence of that key in the document.
 " :HopChar2: type a bigram (two keys) and hop to any occurrence of that bigram in the document.
 " :HopLine: jump to any visible line in your buffer.
-nmap s :HopChar2
+nmap s :HopChar2<CR>
 
 " == markbar ==
 
