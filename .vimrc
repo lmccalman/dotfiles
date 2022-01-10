@@ -36,10 +36,9 @@ Plug 'junegunn/fzf.vim'
 " Navigation
 " ----------
 Plug 'takac/vim-hardtime'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'phaazon/hop.nvim'
 Plug 'Yilin-Yang/vim-markbar'
 Plug 'dbakker/vim-paragraph-motion'
+Plug 'ggandor/lightspeed.nvim'
 
 " Text 
 " ------------
@@ -52,18 +51,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Visual
 " ------
 "
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'xtal8/traces.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'ron-rs/ron.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'Pocco81/TrueZen.nvim'
+Plug 'karb94/neoscroll.nvim'
 ":TSInstall python
 ":TSInstall rust
+":TSInstall toml
+":TSInstall typescript
+Plug 'DingDean/wgsl.vim'
 
 " Etc
 " ---
@@ -71,6 +73,8 @@ Plug 'tpope/vim-fugitive' " git especially merging over cmdline
 Plug 'tpope/vim-eunuch' "for :SudoWrite and etc
 Plug 'tpope/vim-repeat' "enables repeats on tpopes plugins
 Plug 'simnalamburt/vim-mundo'
+Plug 'neomake/neomake'
+Plug 'kevinhwang91/nvim-bqf'
 
 " Bench
 " -----
@@ -84,11 +88,7 @@ Plug 'simnalamburt/vim-mundo'
 
 call plug#end()
 
-let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-rust-analyzer', 'coc-pairs']
-
-lua << EOF
-require'hop'.setup()
-EOF
+let g:coc_global_extensions = ['coc-snippets', 'coc-pyright', 'coc-rust-analyzer', 'coc-pairs', 'coc-tsserver']
 
 " === Tree sitter settings ===
 
@@ -98,14 +98,55 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true, 
+    max_file_lines = 1000
+  }
 }
+
+require'lualine'.setup {
+    options = {theme = 'gruvbox'}
+}
+
+require'lightspeed'.setup {
+  jump_to_first_match = true,
+  jump_on_partial_input_safety_timeout = 400,
+}
+
+local true_zen = require("true-zen")
+
+true_zen.setup({
+	integrations = {
+		nvim_bufferline = true,
+		vim_airline = true,
+	}
+})
+
+require('bqf').setup({
+    auto_enable = true,
+})
+
+require('neoscroll').setup({
+    -- All these keys will be mapped to their corresponding default scrolling animation
+    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+                '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+    hide_cursor = true,          -- Hide cursor while scrolling
+    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    easing_function = "cubic"        -- Default easing function
+})
+
 EOF
+
 " let g:indent_blankline_space_char_highlight_list = ['CursorLine', 'Function']
 let g:indent_blankline_use_treesitter = v:true
 let g:indent_blankline_show_current_context = v:true
 " let g:indent_blankline_show_trailing_blankline_indent = v:false
 let g:indent_blankline_show_first_indent_level = v:false
 let g:indent_blankline_context_patterns = ['class', 'function', 'method', 'if', 'let', 'match']
+let g:indent_blankline_show_trailing_blankline_indent = v:true
+let g:indent_blankline_show_end_of_line = v:true
 
 " === Neovide Settings ===
 set guifont=OperatorMono\ Nerd\ Font:h32
@@ -155,15 +196,16 @@ set sessionoptions-=localoptions
 " \ endif
 
 " ==== Formatting ====
-set formatoptions=tcnjq1
+set formatoptions=tlcnjq1
 set expandtab
-" set shiftwidth=0
-" set shiftround
-" set softtabstop=2
-" set tabstop=2
-" set textwidth=79
+set shiftwidth=2
+set shiftround
+set softtabstop=2
+set tabstop=2
+set textwidth=79
 set virtualedit=block
-set nowrap
+set wrap
+set linebreak
 "}}}
 
 
@@ -173,6 +215,8 @@ set termguicolors
 " set relativenumber " off so I use S more
 set title
 set ruler
+set number
+set relativenumber
 set scrolloff=9999
 set sidescroll=1
 set sidescrolloff=1
@@ -187,10 +231,13 @@ set laststatus=2
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-let g:gruvbox_bold=1
-let g:gruvbox_italic=1
 set background=dark    " Setting dark mode
-colorscheme gruvbox8
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_diagnostic_text_highlight = 1
+let g_gruvbox_material_palette = 'original'
+colorscheme gruvbox-material
 
 " set wildignore+=.hg,.git,.svn                    " Version control
 " set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -264,7 +311,7 @@ let g:ags_enable_async = 1
 " ==== Buffers ====
 set autochdir
 nnoremap <leader>s :b#<CR>
-nnoremap <Leader>c :bd<CR>
+" nnoremap <Leader>c :bd<CR>
 nnoremap <Leader>w :update<CR>
 
 " ==== Clipboard and Undo ====
@@ -334,21 +381,22 @@ nnoremap gdm :diffget //3<CR>
 
 " === Plugin Configs ===
 "
+" == neomake
+let g:neomake_rust_cargo_command = ['lbuild']
+let g:neomake_rust_enabled_makers = ['cargo']
+" setting to 2 won't automatically go the first error
+let g:neomake_open_list = 1
+nnoremap <leader>c :Neomake! cargo<CR>
+
+" autocmd Filetype rust setlocal makeprg='cargo'
+
 
 " == Comfortable-motion
-let g:comfortable_motion_no_default_key_mappings = 1
-nnoremap <silent> L :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> H :call comfortable_motion#flick(-100)<CR>
+" let g:comfortable_motion_no_default_key_mappings = 1
+" nnoremap <silent> L :call comfortable_motion#flick(100)<CR>
+" nnoremap <silent> H :call comfortable_motion#flick(-100)<CR>
 " noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 " noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
-
-" == hop
-" :HopWord: hop around by highlighting words.
-" :HopPattern: hop around by matching against a pattern (as with /).
-" :HopChar1: type a single key and hop to any occurrence of that key in the document.
-" :HopChar2: type a bigram (two keys) and hop to any occurrence of that bigram in the document.
-" :HopLine: jump to any visible line in your buffer.
-nmap s :HopChar2<CR>
 
 " == markbar ==
 
@@ -551,6 +599,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
+
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
@@ -568,11 +617,10 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -589,24 +637,24 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " TODO explore this
-" nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
+nmap <silent><nowait> <space>a  <Plug>(coc-codeaction-cursor)
 
 " == airline
-" let g:airline_theme='gruvbox'
+let g:airline_theme='gruvbox_material'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " == Goyo and Limelight
-let g:limelight_default_coefficient = 0.5
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 0
-"   Set it to -1 not to overrule hlsearch
-let g:limelight_priority = -1
-let g:goyo_width = 80
-let g:goyo_height = 85 
-let g:goyo_linenr = 0
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" let g:limelight_default_coefficient = 0.5
+" " Number of preceding/following paragraphs to include (default: 0)
+" let g:limelight_paragraph_span = 0
+" "   Set it to -1 not to overrule hlsearch
+" let g:limelight_priority = -1
+" let g:goyo_width = 80
+" let g:goyo_height = 85 
+" let g:goyo_linenr = 0
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 " == mundo
 nnoremap <leader>u :MundoToggle<CR>
