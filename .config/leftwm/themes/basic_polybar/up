@@ -26,18 +26,23 @@ echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
 #   feh --bg-scale $SCRIPTPATH/background.jpg
 # fi
 
-
-# index=0
-# monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
-# leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
-# do 
-#   barname="mainbar$index"
-#   monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
-#   let index=index+1
-# done
-
 killall -q polybar
-cadence-session-start --start
+
+index=0
+monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
+leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
+do 
+  barname="mainbar$index"
+  monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
+  let index=index+1
+done
+
+
+
+
+
+# picom -b --config ~/.config/picom/picom.conf
+cadence-session-start --system-start
 dropbox &
 dunst &
 
@@ -45,5 +50,5 @@ $HOME/.config/i3/wallpaper.sh &
 nm-applet --sm-disable &
 # blueman-tray &
 dropbox &
-polybar mainbar &
-polybar altbar &
+# polybar mainbar &
+# polybar altbar &

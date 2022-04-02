@@ -10,7 +10,7 @@ focus_new_windows = true
 
 [[scratchpad]]
 name = "Kitty"
-value = "kitty"
+value = "alacritty"
 x = 0.1
 y = 0.1
 height = 0.5
@@ -19,7 +19,7 @@ weidth = 0.5
 [[keybind]]
 command = "Execute"
 value = "rofi -combi-modi window,run -show combi -modi combi"
-modifier = ["modkey"]
+modifier = ["Mod4"]
 key = "r"
 
 [[keybind]]
@@ -37,7 +37,7 @@ key = "f"
 
 [[keybind]]
 command = "Execute"
-value = "kitty"
+value = "alacritty"
 modifier = ["Mod4"]
 key = "Return"
 

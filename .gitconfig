@@ -5,8 +5,11 @@
 [mergetool "nvim"]
   cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+
 [merge]
-	tool = nvim
+	tool = meld
 
 [mergetool]
   prompt = false

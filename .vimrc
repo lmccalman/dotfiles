@@ -374,7 +374,7 @@ let g:tex_flavor='latex'
 "   autocmd BufRead,BufNewFile *mutt-* setlocal tw=72 spell formatoptions=tcqj
 " augroup END
 
-" === Git merging ===
+" === Git merge merging ===
 nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap gdt :diffget //2<CR> 
 nnoremap gdm :diffget //3<CR>
