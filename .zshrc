@@ -114,9 +114,9 @@ bindkey '^[[Z' autosuggest-execute
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # System aliases
-alias find="fd"
-alias htop="btop"
-alias cat='bat'
+# alias find="fd"
+# alias htop="btop"
+# alias cat='bat'
 alias ls='lsd'
 alias tree='lsd --tree'
 alias ag='rg'
