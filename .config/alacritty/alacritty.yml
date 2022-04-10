@@ -13,6 +13,7 @@ env:
   TERM: xterm-256color
 
 window:
+  opacity: 0.8
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -103,7 +104,7 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: FiraCode Nerd Font
+    family: OperatorMono Nerd Font
 
     # Font family
     #
@@ -113,7 +114,7 @@ font:
     #   - (Windows) Consolas
 
     # The `style` can be specified to pick a specific face.
-    style: Retina
+    style: Regular
 
   # Bold font face
   #bold:
@@ -149,7 +150,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -323,7 +324,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-#background_opacity: 1.0
+# background_opacity: 1.0
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

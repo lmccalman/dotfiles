@@ -115,7 +115,7 @@ bindkey '^[[Z' autosuggest-execute
 
 # System aliases
 alias find="fd"
-alias htop="bashtop"
+alias htop="btop"
 alias cat='bat'
 alias ls='lsd'
 alias tree='lsd --tree'
@@ -145,6 +145,9 @@ alias pacs='paru -Ss' # search
 alias pacfiles='paru -Ql' # list the files from a certain pacagke
 alias pacwhich='paru -Qo' # which package has that file
 alias pacclean='paru -Qdtq | paru -Rs -' # kill unneeded pacs
+
+# check wayland
+alias iswayland='extramaus'
 
 # Monitors
 alias atdesk='~/.screenlayout/atdesk.sh'

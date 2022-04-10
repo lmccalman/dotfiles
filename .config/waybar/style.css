@@ -1,0 +1,69 @@
+* {
+	border: none;
+	border-radius: 0;
+  font-family: "OperatorMono Nerd Font";
+	font-size: 16px;
+	min-height: 10px;
+}
+
+window#waybar {
+	background: transparent;
+  color: white;
+}
+
+
+#window {
+	margin-top: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+  color: transparent;
+	background: transparent;
+}
+
+#tags button {
+	transition: none;
+	/* color: #B5E8E0; */
+	background: transparent;
+	font-size: 16px;
+	border-radius: 0px;
+}
+
+#tags button.occupied {
+	transition: none;
+	color: #F28FAD;
+	background: transparent;
+	font-size: 4px;
+}
+
+#tags button.focused {
+	color: #ABE9B3;
+    border-top: 1px solid #ABE9B3;
+    border-bottom: 1px solid #ABE9B3;
+}
+
+#tags button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: #FAE3B0;
+    border-color: #E8A2AF;
+    color: #E8A2AF;
+}
+
+#tags button.focused:hover {
+    color: #E8A2AF;
+}
+
+#cpu,
+#memory,
+#network,
+#temperature,
+#custom-spotify,
+#tray,
+#clock {
+  padding: 0 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
