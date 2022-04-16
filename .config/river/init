@@ -16,31 +16,36 @@ riverctl spawn "/home/lb/.config/river/wallpaper.sh"
 riverctl spawn "dunst"
 riverctl spawn "waybar"
 riverctl spawn "wl-paste -t text --watch clipman store --no-persist"
+riverctl spawn "dropbox"
 
+
+# Super+R to run application launcher
+riverctl map normal Super R spawn "/home/lb/.config/river/fuzzel.sh"
+riverctl map normal Super F spawn "firefox-developer-edition"
+riverctl map normal Super S spwan "spotify"
+riverctl map normal Super D spwan "dolphin"
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
-# Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Super+Shift Return spawn alacritty
-
-# Super+D to run application launcher
-riverctl map normal Super D spawn "/home/lb/.config/river/fuzzel.sh"
+# Super+Shift+Return to start terminal
+riverctl map normal Super Return spawn alacritty
 
 
-# Super+Q to close the focused view
-riverctl map normal Super Q close
+
+# Super+D to close the focused view
+riverctl map normal Alt D close
 
 # Super+Shift+E to exit river
-riverctl map normal Super+Shift E exit
+riverctl map normal Alt+Shift Q exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
+riverctl map normal Alt L focus-view next
+riverctl map normal Alt H focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
-riverctl map normal Super+Shift J swap next
-riverctl map normal Super+Shift K swap previous
+riverctl map normal Alt+Shift L swap next
+riverctl map normal Alt+Shift H swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
@@ -51,15 +56,16 @@ riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
-riverctl map normal Super Return zoom
+riverctl map normal Alt Return zoom
+
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map normal Alt K send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal Alt J send-layout-cmd rivertile "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+riverctl map normal Alt+Shift K send-layout-cmd rivertile "main-count +1"
+riverctl map normal Alt+Shift J send-layout-cmd rivertile "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -90,10 +96,10 @@ do
     tags=$((1 << ($i - 1)))
 
     # Super+[1-9] to focus tag [0-8]
-    riverctl map normal Super $i set-focused-tags $tags
+    riverctl map normal Alt $i set-focused-tags $tags
 
     # Super+Shift+[1-9] to tag focused view with tag [0-8]
-    riverctl map normal Super+Shift $i set-view-tags $tags
+    riverctl map normal Alt+Shift $i set-view-tags $tags
 
     # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
     riverctl map normal Super+Control $i toggle-focused-tags $tags
@@ -105,20 +111,20 @@ done
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
 all_tags=$(((1 << 32) - 1))
-riverctl map normal Super 0 set-focused-tags $all_tags
-riverctl map normal Super+Shift 0 set-view-tags $all_tags
+riverctl map normal Alt 0 set-focused-tags $all_tags
+riverctl map normal Alt+Shift 0 set-view-tags $all_tags
 
 # Super+Space to toggle float
-riverctl map normal Super Space toggle-float
+riverctl map normal Alt Space toggle-float
 
 # Super+F to toggle fullscreen
-riverctl map normal Super F toggle-fullscreen
+riverctl map normal Alt F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+riverctl map normal Alt Up    send-layout-cmd rivertile "main-location top"
+riverctl map normal Alt Right send-layout-cmd rivertile "main-location right"
+riverctl map normal Alt Down  send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Alt Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -157,6 +163,10 @@ done
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
+
+# Mouse
+riverctl focus-follows-cursor normal
+riverctl set-cursor-warp on-output-change
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300

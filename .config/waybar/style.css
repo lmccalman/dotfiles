@@ -7,8 +7,8 @@
 }
 
 window#waybar {
-	background: transparent;
-  color: white;
+	background: #282828;
+  color: #ebdbb2;
 }
 
 
@@ -18,8 +18,8 @@ window#waybar {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-  color: transparent;
-	background: transparent;
+	background: #282828;
+  color: #ebdbb2;
 }
 
 #tags button {
@@ -66,4 +66,5 @@ window#waybar {
   padding: 0 5px;
   margin-right: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
