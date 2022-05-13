@@ -61,10 +61,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'Pocco81/TrueZen.nvim'
 Plug 'karb94/neoscroll.nvim'
-":TSInstall python
-":TSInstall rust
-":TSInstall toml
-":TSInstall typescript
+":TSInstall python rust toml typescript bash dockerfile html json latex css vim 
 Plug 'DingDean/wgsl.vim'
 
 " Etc
