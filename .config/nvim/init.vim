@@ -38,8 +38,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'takac/vim-hardtime'
 Plug 'Yilin-Yang/vim-markbar'
 Plug 'dbakker/vim-paragraph-motion'
-" Plug 'ggandor/lightspeed.nvim'
-" TODO examine this
+Plug 'ggandor/leap.nvim'
 
 " Text 
 " ------------
@@ -105,6 +104,8 @@ require'nvim-treesitter.configs'.setup {
     max_file_lines = 1000
   }
 }
+
+require('leap').set_default_keymaps()
 
 require'lualine'.setup {
     options = {theme = 'gruvbox'}
