@@ -1,0 +1,15 @@
+[user]
+	name = Lachlan McCalman
+	email = lachlan@mccalman.info
+
+[push]
+	default = simple
+
+[github]
+	user = lmccalman
+
+[pull]
+	rebase = false
+
+[init]
+	defaultBranch = main
