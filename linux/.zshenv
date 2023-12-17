@@ -1,15 +1,8 @@
-export XKB_DEFAULT_LAYOUT="us(dvorak)"
 export EDITOR=/usr/bin/nvim
 export TERM=xterm-256color
 export TERMINAL=/usr/bin/alacritty
 export DEFAULT_USER=lb
 export BROWSER=/usr/bin/firefox-developer-edition
-
-# Virtualenv
-export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUAL_ENV_DISABLE_PROMPT=true
-export PIPENV_VENV_IN_PROJECT=1
 
 # X / Wayland
 export QT_QPA_PLATFORM=wayland-egl

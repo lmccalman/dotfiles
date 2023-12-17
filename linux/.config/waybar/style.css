@@ -22,7 +22,7 @@ window#waybar {
   color: #ebdbb2;
 }
 
-#tags button {
+#workspaces button {
 	transition: none;
 	/* color: #B5E8E0; */
 	background: transparent;
@@ -30,20 +30,20 @@ window#waybar {
 	border-radius: 0px;
 }
 
-#tags button.occupied {
+#workspaces button.occupied {
 	transition: none;
 	color: #F28FAD;
 	background: transparent;
 	font-size: 4px;
 }
 
-#tags button.focused {
+#workspaces button.focused {
 	color: #ABE9B3;
     border-top: 1px solid #ABE9B3;
     border-bottom: 1px solid #ABE9B3;
 }
 
-#tags button:hover {
+#workspaces button:hover {
 	transition: none;
 	box-shadow: inherit;
 	text-shadow: inherit;
@@ -52,7 +52,7 @@ window#waybar {
     color: #E8A2AF;
 }
 
-#tags button.focused:hover {
+#workspaces button.focused:hover {
     color: #E8A2AF;
 }
 
