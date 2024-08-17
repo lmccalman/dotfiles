@@ -25,6 +25,7 @@ window#waybar {
 #workspaces button {
 	transition: none;
 	/* color: #B5E8E0; */
+	color: inherit;
 	background: transparent;
 	font-size: 16px;
 	border-radius: 0px;
@@ -32,7 +33,7 @@ window#waybar {
 
 #workspaces button.occupied {
 	transition: none;
-	color: #F28FAD;
+	color: #ABE9B3;
 	background: transparent;
 	font-size: 4px;
 }

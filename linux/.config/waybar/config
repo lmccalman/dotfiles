@@ -16,7 +16,7 @@
     		"show-passive-items": true,
 	},
     	"clock": {
-        	"format": "{: %H%M   %a %e %b}"
+        	"format": " {:%H:%M  %a %e %b}"
     	},
     	"cpu": {
 		"interval": 1,

@@ -24,6 +24,7 @@ set $term alacritty
 set $menu fuzzel
 
 ## startup commands
+exec mako
 exec dropbox
 exec /home/lb/.config/sway/wallpaper.sh
 
@@ -115,7 +116,13 @@ input * {
     bindsym $mod+d kill
 
     # Start your launcher
-    bindsym $sup+Space exec $menu
+    bindsym $sup+r exec $menu
+
+    # other apps
+    bindsym $sup+f exec firefox-developer-edition
+
+    #bindsym $sup+Shift+s exec grimshot save area
+    bindsym $sup+Shift+s exec slurp | grim -g - - | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -262,5 +269,10 @@ bar {
 
     swaybar_command waybar
 }
+
+
+## floating windows
+
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 
 include /etc/sway/config.d/*
