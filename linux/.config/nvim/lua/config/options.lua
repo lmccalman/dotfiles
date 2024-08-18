@@ -1,4 +1,9 @@
+-- :TSInstall rust python lua
+
+--
 -- set wrap
+--
+--
 -- set linebreak
 -- set foldmethod=marker
 -- set hidden  " let me move buffers without saving
@@ -26,8 +31,6 @@
 -- set number
 -- set relativenumber
 -- set scrolloff=9999
--- set sidescroll=1
--- set sidescrolloff=1
 -- set showmatch
 -- set lazyredraw "don't redraw whilst running macros
 -- set display=uhex " affects the last line somehow
@@ -49,27 +52,33 @@
 -- set cmdheight=2
 -- set updatetime=300
 
+vim.opt.autochdir = true
 vim.opt.conceallevel = 2
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.formatoptions='tlcnjq1'
+vim.opt.gdefault = true
 vim.opt.expandtab = true
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = '› ',
-  trail = '·',
-  eol = '«',
-  extends = '>',
-  precedes = '<'
+
+  tab = '▸ ',
+  trail = '•',
+  -- eol = '«',
+  nbsp = '␣',
+  extends = '⟩',
+  precedes = '⟨'
 }
 vim.opt.number = true
 vim.opt.numberwidth = 3
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
+vim.opt.scrolloff = 9999
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
-vim.opt.showbreak = '  » '
 vim.opt.showtabline = 2
+vim.opt.sidescroll=1
+vim.opt.sidescrolloff=1
 vim.opt.signcolumn = 'number'
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -82,10 +91,29 @@ vim.opt.virtualedit = "block"
 
 require("telescope").load_extension("fzf")
 
+require('lualine').setup()
+
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    python = { "isort", "black" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+    -- Conform will run the first available formatter
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+  },
+})
+
+require('lint').linters_by_ft = {
+  markdown = {'vale',},
+  python = {'pylint',},
+}
+
+
+---
+-- LSP configuration
+---
 local lsp_zero = require('lsp-zero')
 
--- lsp_attach is where you enable features that only work
--- if there is a language server active in the file
 local lsp_attach = function(client, bufnr)
   local opts = {buffer = bufnr}
 
@@ -107,31 +135,30 @@ lsp_zero.extend_lspconfig({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
+-- Add all the language servers installed on the system
+require('lspconfig').rust_analyzer.setup({})
 
-require('lualine').setup()
-require('lspconfig').pyright.setup({})
-require'lspconfig'.rust_analyzer.setup{
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = false;
-      }
-    }
-  }
-}
+---
+-- Autocompletion setup
+---
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
 
-require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    python = { "isort", "black" },
-    rust = { "rustfmt", lsp_format = "fallback" },
-    -- Conform will run the first available formatter
-    javascript = { "prettierd", "prettier", stop_after_first = true },
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
   },
+  snippet = {
+    expand = function(args)
+      -- You need Neovim v0.10 to use vim.snippet
+      vim.snippet.expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+   ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+   ['<S-Tab>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+   ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+   ['<C-d>'] = cmp.mapping.scroll_docs(4),   
+  }),
 })
-
-require('lint').linters_by_ft = {
-  markdown = {'vale',},
-  python = {'pylint',},
-}
 

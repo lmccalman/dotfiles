@@ -2,10 +2,12 @@ vim.keymap.set('i', "jk", "<Escape>")
 
 
 local telescope_bi = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>ff', telescope_bi.find_files, {})
-vim.keymap.set('n', '<leader>l', telescope_bi.live_grep, {})
+vim.keymap.set('n', '<leader>f', telescope_bi.git_files, {})
+vim.keymap.set('n', '<leader>r', telescope_bi.live_grep, {})
 vim.keymap.set('n', '<leader>b', telescope_bi.buffers, {})
--- vim.keymap.set('n', '<leader>fh', telescope_bi.help_tags, {})
+vim.keymap.set('n', '<leader>q', telescope_bi.quickfix, {})
+vim.keymap.set('n', '<leader>d', telescope_bi.diagnostics, {})
+vim.keymap.set('n', '<leader>n', telescope_bi.treesitter, {})
 
 -- previous buffer
 vim.keymap.set('n', '<leader>s', ':b#<CR>')
